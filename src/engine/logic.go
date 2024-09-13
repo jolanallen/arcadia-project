@@ -56,7 +56,7 @@ func (e *Engine) InGameLogic() {
 	// Sprint du personnage
 
 	if rl.IsKeyDown(rl.KeyLeftShift) {
-		e.Player.Speed = 7
+		e.Player.Speed = 2
 	} else {
 		e.Player.Speed = 1
 	}
