@@ -9,6 +9,7 @@ import (
 func (e *Engine) HomeLogic() {
 
 	//Musique
+
 	if !rl.IsMusicStreamPlaying(e.Music) {
 		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
 		rl.PlayMusicStream(e.Music)
@@ -16,6 +17,7 @@ func (e *Engine) HomeLogic() {
 	rl.UpdateMusicStream(e.Music)
 
 	//Menus
+	
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME

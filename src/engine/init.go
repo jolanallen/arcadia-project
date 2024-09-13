@@ -1,74 +1,93 @@
 package engine
 
 import (
-	"main/src/entity"
-	"main/src/item"
+    "fmt"
+    "main/src/entity"
+    "main/src/item"
 
-	rl "github.com/gen2brain/raylib-go/raylib"
+    rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 const (
-	ScreenWidth  = 1400
-	ScreenHeight = 800
+    ScreenWidth  = 1800
+    ScreenHeight = 1080
 )
 
+type GameEngine struct {
+    ScreenWidth  int32
+    ScreenHeight int32
+    Title        string
+}
+
 func (e *Engine) Init() {
-	rl.InitWindow(ScreenWidth, ScreenHeight, "Arcadia")
+    rl.InitWindow(ScreenWidth, ScreenHeight, "Arcadia")
 
-	// Initialisation des variables de l'engine
-	e.IsRunning = true
-	e.Sprites = make(map[string]rl.Texture2D)
+    // Initialisation des variables de l'engine
+    e.IsRunning = true
+    e.Sprites = make(map[string]rl.Texture2D)
 
-	// Initialisation des composants du jeu
-	e.InitEntities()
-	e.InitCamera()
-	e.InitMusic()
-	e.InitMap("textures/map/tilesets/map.json")
+    // Initialisation des composants du jeu
+    e.InitEntities()
+    e.InitCamera()
+    e.InitMusic()
+    e.InitMap("textures/map/tilesets/map.json")
+}
 
+func (g *GameEngine) PrintScreenSize() {
+    fmt.Println(g.ScreenWidth, "*", g.ScreenHeight)
+}
+
+// ---Init Window--- //
+func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
+    g.ScreenWidth = x
+    g.ScreenHeight = y
+    g.Title = title
+    rl.InitWindow(g.ScreenWidth, g.ScreenHeight, g.Title)
+    rl.SetTargetFPS(60)
+    rl.ToggleFullscreen()
 }
 
 func (e *Engine) InitEntities() {
+    e.Player = entity.Player{
+        Position:  rl.Vector2{X: 300, Y: 300},
+        Health:    100,
+        Money:     1000,
+        Speed:     1,
+        Inventory: []item.Item{},
 
-	e.Player = entity.Player{
-		Position:  rl.Vector2{X: 300, Y: 300},
-		Health:    100,
-		Money:     1000,
-		Speed:     1,
-		Inventory: []item.Item{},
+        IsAlive: true,
 
-		IsAlive: true,
+        Sprite: e.Player.Sprite,
+    }
 
-		Sprite: e.Player.Sprite,
-	}
+    e.Monsters = append(e.Monsters, entity.Monster{
+        Name:     "claude",
+        Position: rl.Vector2{X: 400, Y: 320},
+        Health:   20,
+        Damage:   5,
+        Loot:     []item.Item{},
+        Worth:    12,
 
-	e.Monsters = append(e.Monsters, entity.Monster{
-		Name:     "claude",
-		Position: rl.Vector2{X: 400, Y: 320},
-		Health:   20,
-		Damage:   5,
-		Loot:     []item.Item{},
-		Worth:    12,
+        IsAlive: true,
+        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+    })
 
-		IsAlive: true,
-		Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
-	})
-
-	e.Player.Money = 0
+    e.Player.Money = 0
 }
 
 func (e *Engine) InitCamera() {
-	e.Camera = rl.NewCamera2D( //Camera vide, a changer dans chaque logique de scene
-		rl.NewVector2(0, 0),
-		rl.NewVector2(0, 0),
-		0.0,
-		2.0,
-	)
+    e.Camera = rl.NewCamera2D( // Camera vide, à changer dans chaque logique de scène
+        rl.NewVector2(0, 0),
+        rl.NewVector2(0, 0),
+        0.0,
+        2.0,
+    )
 }
 
 func (e *Engine) InitMusic() {
-	rl.InitAudioDevice()
+    rl.InitAudioDevice()
 
-	e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+    e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
 
-	rl.PlayMusicStream(e.Music)
+    rl.PlayMusicStream(e.Music)
 }
