@@ -51,9 +51,17 @@ func (e *Engine) InGameLogic() {
 		e.Player.Position.X += e.Player.Speed
 	}
 
+	// Sprint du personnage
+
+	if rl.IsKeyDown(rl.KeyLeftShift) {
+		e.Player.Speed = 7
+	} else {
+		e.Player.Speed = 1
+	}
+
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 70, Y: e.Player.Position.Y + 70}
-	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 170, Y: e.Player.Position.Y + 70} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
