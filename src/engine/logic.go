@@ -51,6 +51,8 @@ func (e *Engine) InGameLogic() {
 		e.Player.Position.X += e.Player.Speed
 	}
 
+	e.Player.UpdatePlayer()
+
 	// Sprint du personnage
 
 	if rl.IsKeyDown(rl.KeyLeftShift) {
@@ -112,7 +114,7 @@ func (e *Engine) PauseLogic() {
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
 		e.StateEngine = INGAME
 	}
-	if rl.IsKeyPressed(rl.KeyA) {
+	if rl.IsKeyPressed(rl.KeyA) || rl.IsKeyPressed(rl.KeyQ) {
 		e.StateMenu = HOME
 		rl.StopMusicStream(e.Music)
 	}

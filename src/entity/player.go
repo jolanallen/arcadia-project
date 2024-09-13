@@ -9,27 +9,37 @@ import (
 
 type Player struct {
 
-	Position  rl.Vector2
-	Health    int
-	Money     int
-	Speed     float32
-	Inventory []item.Item
+    Position  rl.Vector2
+    Health    int
+    Money     int
+    Speed     float32
+    Inventory []item.Item
 
-	IsAlive bool
+    IsAlive bool
 
-	Sprite rl.Texture2D
+    Sprite rl.Texture2D
 }
 
 func (p *Player) Attack(m *Monster) {
-	m.Health -= 1
+    m.Health -= 1
 }
 
 func (p *Player) ToString() {
-	fmt.Printf(`
-	Joueur:
-		Vie: %d,
-		Argent: %d,
-		Inventaire: %+v
-	
-	\n`, p.Health, p.Money, p.Inventory)
+    fmt.Printf(`
+    Joueur:
+        Vie: %d,
+        Argent: %d,
+        Inventaire: %+v
+    
+    \n`, p.Health, p.Money, p.Inventory)
+}	
+
+func (p *Player) UpdatePlayer() {
+	p.UpdateLife()
+}
+
+func (p *Player) UpdateLife() {
+	if p.Health > 0 {
+		p.Health -= 1
+	}
 }

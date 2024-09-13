@@ -2,6 +2,7 @@ package engine
 
 import (
 	"main/src/entity"
+	"strconv"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -32,6 +33,7 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 
 	// Ecriture fixe (car pas affectée par le mode camera)
+	rl.DrawText(strconv.Itoa(e.Player.Health) + " / 100", 0 , 100, 40, rl.RayWhite)
 	rl.DrawText("Playing", int32(rl.GetScreenWidth())/2-rl.MeasureText("Playing", 40)/2, int32(rl.GetScreenHeight())/2-350, 40, rl.RayWhite)
 	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-300, 20, rl.RayWhite)
 
