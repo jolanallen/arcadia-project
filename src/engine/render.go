@@ -30,10 +30,11 @@ func (e *Engine) InGameRendering() {
 	e.RenderMonsters()
 	e.RenderPlayer()
 
-	rl.EndMode2D() // On finit le rendu camera
 
+	rl.EndMode2D() // On finit le rendu camera
+	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawText(strconv.Itoa(e.Player.Health) + " / 100", 5, 5, 40, rl.Red)
+	rl.DrawTextEx(vrm, strconv.Itoa(e.Player.Health) + " / 100", rl.Vector2{X: 5, Y: 5}, 40, 2, rl.Red)
 	rl.DrawText("Playing", int32(rl.GetScreenWidth())/2-rl.MeasureText("Playing", 40)/2, int32(rl.GetScreenHeight())/2-350, 40, rl.RayWhite)
 	rl.DrawText("[P] or [Esc] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-300, 20, rl.RayWhite)
 
