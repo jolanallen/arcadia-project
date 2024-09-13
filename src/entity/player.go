@@ -39,7 +39,5 @@ func (p *Player) UpdatePlayer() {
 }
 
 func (p *Player) UpdateLife() {
-	if p.Health > 0 {
-		p.Health -= 1
-	}
+	
 }
