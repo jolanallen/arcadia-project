@@ -68,7 +68,7 @@ func (e *Engine) RenderMonsters() {
 		rl.DrawTexturePro(
 			monster.Sprite,
 			rl.NewRectangle(0, 0, 100, 100),
-			rl.NewRectangle(monster.Position.X, monster.Position.Y, 250, 150),
+			rl.NewRectangle(monster.Position.X, monster.Position.Y, 150, 150),
 			rl.Vector2{X: 0, Y: 0},
 			0,
 			rl.White,

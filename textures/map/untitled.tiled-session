@@ -1,14 +1,7 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
-    "activeFile": "",
-    "expandedProjectPaths": [
-    ],
     "fileStates": {
         "": {
-            "scaleInDock": 1
+            "scaleInDock": 0.75
         },
         "tilesets/TX Plant.tsx": {
             "scaleInDock": 1,
@@ -51,21 +44,5 @@
         "untitled.tmx#TX Shadow Plant": {
             "scaleInDock": 1
         }
-    },
-    "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
-    "last.externalTilesetPath": "/home/jolan/arcadia-project/textures/map/tilesets",
-    "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets",
-    "map.height": 50,
-    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
-    "map.width": 50,
-    "openFiles": [
-    ],
-    "project": "untitled.tiled-project",
-    "property.type": "object",
-    "recentFiles": [
-        "tilesets/TX Plant.tsx"
-    ],
-    "tileset.embedInMap": true,
-    "tileset.lastUsedFormat": "tsx"
+    }
 }

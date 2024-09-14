@@ -17,7 +17,7 @@ func (e *Engine) HomeLogic() {
 	rl.UpdateMusicStream(e.Music)
 
 	//Menus
-	
+
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME
@@ -85,6 +85,11 @@ func (e *Engine) InGameLogic() {
 func (e *Engine) CheckCollisions() {
 
 	e.MonsterCollisions()
+	e.ZoneCollisions()
+
+}
+func (e *Engine) ZoneCollisions() {
+	// Ajout des colisions sur les zone dite interdit de la map !!!
 }
 
 func (e *Engine) MonsterCollisions() {
@@ -98,11 +103,11 @@ func (e *Engine) MonsterCollisions() {
 			if monster.Name == "claude" {
 				e.NormalTalk(monster, "olalalalalal mahan je t'aime")
 				if rl.IsKeyPressed(rl.KeyE) {
-					//lancer un combat ?
+					//lancer un combat en attendant juste dire combat refuse
 				}
 			}
 		} else {
-			//...
+			// ......
 		}
 	}
 }
