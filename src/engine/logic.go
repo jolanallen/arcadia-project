@@ -96,7 +96,7 @@ func (e *Engine) MonsterCollisions() {
 			monster.Position.Y < e.Player.Position.Y+20 {
 
 			if monster.Name == "claude" {
-				e.NormalTalk(monster, "Bonjour")
+				e.NormalTalk(monster, "oooooooh yeah fuck me please")
 				if rl.IsKeyPressed(rl.KeyE) {
 					//lancer un combat ?
 				}

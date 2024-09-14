@@ -7,6 +7,9 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "tilesets/TX Plant.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -28,6 +31,9 @@
         "tilesets/map.json#TX Shadow Plant": {
             "scaleInDock": 1
         },
+        "tilesets/water_and_island_tiles_v2.tsx": {
+            "scaleInDock": 1
+        },
         "untitled.tmx": {
             "scale": 1.5,
             "selectedLayer": 2,
@@ -46,13 +52,17 @@
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "/home/oue/Desktop/arcadia/textures/map/tilesets",
-    "last.imagePath": "/home/oue/Desktop/arcadia/textures/map/tilesets",
-    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
+    "last.externalTilesetPath": "/home/jolan/arcadia-project/textures/map/tilesets",
+    "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets",
+    "map.height": 50,
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
+    "map.width": 50,
     "openFiles": [
     ],
     "project": "untitled.tiled-project",
+    "property.type": "object",
     "recentFiles": [
         "tilesets/TX Plant.tsx"
     ],
