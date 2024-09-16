@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"fmt"
 	"main/src/entity"
 	"strconv"
 
@@ -13,9 +14,18 @@ func (e *Engine) Rendering() {
 
 func (e *Engine) HomeRendering() {
 	rl.ClearBackground(rl.DarkGreen)
+	e.BackgroundFrameCount++
+	fmt.Println(e.BackgroundFrameCount)
 
-	rl.DrawTexturePro(e.background, rl.NewRectangle(0, 0, 1368, 768), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
+	if e.BackgroundFrameCount%6 == 1 {
+		if e.BgSourceX == 9000 {
+			e.BgSourceX = 0
+		} else {
+			e.BgSourceX += 600
+		}
+	}
 
+	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
@@ -23,8 +33,12 @@ func (e *Engine) HomeRendering() {
 		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
-	rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
-
+	if e.QuitButton.IsHovered {
+		rl.DrawTexturePro(e.QuitButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	} else {
+		rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	}
+	rl.DrawText("QUIT", 1620, 925, 60, rl.White)
 }
 
 func (e *Engine) InGameRendering() {

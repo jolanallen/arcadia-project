@@ -23,14 +23,16 @@ const (
 )
 
 type Engine struct {
-	background rl.Texture2D
-	QuitButton entity.Button
+	Background           rl.Texture2D
+	BgSourceX            int
+	BgSourceY            int
+	BackgroundFrameCount int
+	QuitButton  entity.Button
 	StartButton entity.Button
 
 	Player   entity.Player
 	Monsters []entity.Monster
-	
-	
+
 	Music       rl.Music
 	MusicVolume float32
 
