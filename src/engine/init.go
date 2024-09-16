@@ -31,6 +31,8 @@ func (e *Engine) Init() {
     e.InitCamera()
     e.InitMusic()
     e.InitMap("textures/map/tilesets/map.json")
+
+    e.SpriteLife = rl.LoadTexture("textures/entities/Life/barre_de_vie-removebg-preview.png")
 }
 
 func (g *GameEngine) PrintScreenSize() {

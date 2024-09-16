@@ -30,7 +30,7 @@ type Engine struct {
 	MusicVolume float32
 
 	Sprites map[string]rl.Texture2D
-
+	SpriteLife rl.Texture2D
 	Camera rl.Camera2D
 
 	MapJSON MapJSON
