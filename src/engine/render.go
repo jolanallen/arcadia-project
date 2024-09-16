@@ -14,10 +14,13 @@ func (e *Engine) Rendering() {
 func (e *Engine) HomeRendering() {
 	rl.ClearBackground(rl.DarkGreen)
 
-	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawTexturePro(e.background, rl.NewRectangle(0, 0, 1368, 768), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
 
+	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
+	rl.DrawTexturePro(e.QuitButton, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1450, 800, 384, 240), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawText("QUIT", 1555, 890, 70, rl.White)
+	rl.DrawTexturePro(e.StartButton, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1450, 600, 384, 240), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawText("PLAY", 1555, 690, 70, rl.White)
 }
 
 func (e *Engine) InGameRendering() {

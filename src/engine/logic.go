@@ -18,7 +18,7 @@ func (e *Engine) HomeLogic() {
 
 	//Menus
 
-	if rl.IsKeyPressed(rl.KeyEnter) {
+	if rl.IsMouseButtonDown(0) {
 		e.StateMenu = PLAY
 		e.StateEngine = INGAME
 		rl.StopMusicStream(e.Music)

@@ -23,6 +23,11 @@ const (
 )
 
 type Engine struct {
+	background rl.Texture2D
+
+	QuitButton rl.Texture2D
+	StartButton rl.Texture2D
+
 	Player   entity.Player
 	Monsters []entity.Monster
 

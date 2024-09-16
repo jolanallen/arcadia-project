@@ -9,7 +9,7 @@ import (
 )
 
 const (
-    ScreenWidth  = 1800
+    ScreenWidth  = 1920
     ScreenHeight = 1080
 )
 
