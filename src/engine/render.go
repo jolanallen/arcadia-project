@@ -14,9 +14,16 @@ func (e *Engine) Rendering() {
 func (e *Engine) HomeRendering() {
 	rl.ClearBackground(rl.DarkGreen)
 
+	rl.DrawTexturePro(e.background, rl.NewRectangle(0, 0, 1368, 768), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
+
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[Enter] to Play", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Enter] to Play", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Esc] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	if e.StartButton.IsHovered {
+		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	} else {
+		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	}
+	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
+	rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 
 }
 
@@ -30,36 +37,13 @@ func (e *Engine) InGameRendering() {
 	e.RenderMonsters()
 	e.RenderPlayer()
 
-
 	rl.EndMode2D() // On finit le rendu camera
 	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
-	rl.DrawTextEx(vrm, "Money:" + strconv.Itoa(e.Player.Money) + " /100", rl.Vector2{X: 5, Y: 50}, 40, 2, rl.Gold) // init.go
+	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black)                             // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(vrm, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 50}, 40, 2, rl.Gold) // init.go
+	rl.DrawTextEx(vrm, "Heal:"+strconv.Itoa(e.Player.Health)+" / 100", rl.Vector2{X: 5, Y: 5}, 40, 2, rl.Red)
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
-	rl.DrawTexturePro(
-        e.SpriteLife, 
-        rl.NewRectangle(0, 0, 435, 100),
-        rl.NewRectangle(0, 0, 435, 100),
-        rl.NewVector2(0, 0),
-        0,
-        rl.White)
-
-		rl.DrawTexturePro(
-			e.SpriteMoney, 
-			rl.NewRectangle(20, 0, 487, 95),
-			rl.NewRectangle(0, 120, 487, 95),
-			rl.NewVector2(0, 0),
-			0,
-			rl.White)
-
-			rl.DrawTexturePro(
-				e.SpriteInventaire, 
-				rl.NewRectangle(100, 0, 510, 451),
-				rl.NewRectangle(50, 800, 130, 100),
-				rl.NewVector2(0, 0),
-				0,
-				rl.White)
 }
 
 func (e *Engine) PauseRendering() {

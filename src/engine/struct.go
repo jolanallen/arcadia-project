@@ -17,21 +17,26 @@ const (
 type engine int
 
 const (
-	INGAME  engine = iota
+	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
 )
 
 type Engine struct {
+	background rl.Texture2D
+	QuitButton entity.Button
+	StartButton entity.Button
+
 	Player   entity.Player
 	Monsters []entity.Monster
-
+	
+	
 	Music       rl.Music
 	MusicVolume float32
 
-	Sprites map[string]rl.Texture2D
-	SpriteLife rl.Texture2D
-	SpriteMoney rl.Texture2D
+	Sprites          map[string]rl.Texture2D
+	SpriteLife       rl.Texture2D
+	SpriteMoney      rl.Texture2D
 	SpriteInventaire rl.Texture2D
 
 	Camera rl.Camera2D
