@@ -40,17 +40,41 @@ func (e *Engine) SettingsLogic() {
 
 func (e *Engine) InGameLogic() {
 	// Mouvement
-	if rl.IsKeyDown(rl.KeyW) || rl.IsKeyDown(rl.KeyUp) {
-		e.Player.Position.Y -= e.Player.Speed
-	}
-	if rl.IsKeyDown(rl.KeyS) || rl.IsKeyDown(rl.KeyDown) {
-		e.Player.Position.Y += e.Player.Speed
-	}
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
 	}
 	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
 		e.Player.Position.X += e.Player.Speed
+	}
+	// Saut du personnage
+
+	const jump float32 = 12.0
+	const poid float32 = 1
+	const sol float32 = 250.0 // hauteur sol
+
+	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
+		if !e.Player.Jumping {
+			e.Player.Jumping = true
+			e.Player.Chute = -jump // saute avec une vitesse de -10 sur l'axe y
+		}
+	}
+
+	// gestion de la chute
+	if e.Player.Jumping {
+		e.Player.Position.Y += e.Player.Chute
+		e.Player.Chute += poid //  le poids pour faire redescendre le personnage
+
+		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
+			e.Player.Position.Y = sol //// Rester au sol
+			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
+		}
+	}
+
+	// Sprint du personnage
+	if rl.IsKeyDown(rl.KeyLeftShift) {
+		e.Player.Speed = 2
+	} else {
+		e.Player.Speed = 1
 	}
 
 	e.Player.UpdatePlayer()
@@ -96,40 +120,39 @@ func (e *Engine) MonsterCollisions() {
 
 	for _, monster := range e.Monsters {
 		if monster.Position.X > e.Player.Position.X-50 &&
-		monster.Position.X < e.Player.Position.X+50 &&
-		monster.Position.Y > e.Player.Position.Y-50 &&
-		monster.Position.Y < e.Player.Position.Y+50 {
+			monster.Position.X < e.Player.Position.X+50 &&
+			monster.Position.Y > e.Player.Position.Y-50 &&
+			monster.Position.Y < e.Player.Position.Y+50 {
 
-		if monster.Name == "claude" {
-			e.NormalTalk(monster, "Press E for FIGHT!!")
-			if rl.IsKeyPressed(rl.KeyE) {
-				//lancer un combat en attendant juste dire combat refuse
+			if monster.Name == "claude" {
+				e.NormalTalk(monster, "Press E for FIGHT!!")
+				if rl.IsKeyPressed(rl.KeyE) {
 				} else {
 					///: ....
 				}
-		}
+			}
 		} else {
 			////.....
 		}
-			
+
 	}
 
 	for _, Monster2 := range e.Monsters {
 		if Monster2.Position.X > e.Player.Position.X-50 &&
-		Monster2.Position.X < e.Player.Position.X+50 &&
-		Monster2.Position.Y > e.Player.Position.Y-50 &&
-		Monster2.Position.Y < e.Player.Position.Y+50 {
+			Monster2.Position.X < e.Player.Position.X+50 &&
+			Monster2.Position.Y > e.Player.Position.Y-50 &&
+			Monster2.Position.Y < e.Player.Position.Y+50 {
 
-		if Monster2.Name == "patate" {
-			e.NormalTalk(Monster2, "Press E for FIGHT!!")
-			if rl.IsKeyPressed(rl.KeyE) {
-				//lancer un combat en attendant juste dire combat refuse
+			if Monster2.Name == "patate" {
+				e.NormalTalk(Monster2, "Press E for FIGHT!!")
+				if rl.IsKeyPressed(rl.KeyE) {
+					//lancer un combat en attendant juste dire combat refuse
 				}
-		}
+			}
 		} else {
 			///.....
 		}
-			
+
 	}
 }
 
