@@ -1,4 +1,8 @@
 {
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
     "activeFile": "",
     "expandedProjectPaths": [
     ],
@@ -6,22 +10,37 @@
         "": {
             "scaleInDock": 1
         },
+        "#Tiles": {
+            "scaleInDock": 1
+        },
+        "#Tree-Assets": {
+            "scaleInDock": 1
+        },
         "map.tmx": {
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 318.5,
-                "y": 306
+                "x": 371.33333333333326,
+                "y": 264
             }
         },
         "map.tmx#BG3": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "map.tmx#Buildings": {
+            "scaleInDock": 1.5
+        },
         "map.tmx#Decors": {
             "scaleInDock": 1.5
         },
         "map.tmx#ExampleTiles": {
+            "scaleInDock": 1
+        },
+        "map.tmx#Hive": {
+            "scaleInDock": 1.5
+        },
+        "map.tmx#Interior-01": {
             "scaleInDock": 1
         },
         "map.tmx#Orc": {
@@ -30,8 +49,17 @@
         "map.tmx#Orc-Attack02": {
             "scaleInEditor": 5.5
         },
+        "map.tmx#Props-Rocks": {
+            "scaleInDock": 1
+        },
+        "map.tmx#Tiles": {
+            "scaleInDock": 1.5
+        },
         "map.tmx#Tileset": {
             "scaleInDock": 1.5
+        },
+        "map.tmx#Tree-Assets": {
+            "scaleInDock": 1
         },
         "map.tmx#sorcier": {
             "scaleInEditor": 0.75
@@ -87,10 +115,11 @@
             "scaleInEditor": 1
         }
     },
-    "frame.defaultDuration": 220,
     "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
-    "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Assets",
-    "map.lastUsedExportFilter": "Tous les Fichiers (*)",
+    "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets",
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
     "openFiles": [
     ],
     "project": "map.tiled-project",
