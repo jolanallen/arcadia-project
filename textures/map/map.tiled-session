@@ -3,8 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "tilesets/map.json",
+    "console.history": [
+        "ls",
+        "update",
+        "--help"
+    ],
     "expandedProjectPaths": [
+        ".",
+        "tilesets"
     ],
     "fileStates": {
         "": {
@@ -64,6 +71,10 @@
         "map.tmx#sorcier": {
             "scaleInEditor": 0.75
         },
+        "tilesets/TX Plant.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/assets.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -100,9 +111,18 @@
             "scale": 0.6301171875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 640.3570764366747,
-                "y": 641.1505796292852
+                "x": 700.6633190750729,
+                "y": 791.9161862252805
             }
+        },
+        "tilesets/map.json#Grass": {
+            "scaleInDock": 1
+        },
+        "tilesets/map.json#TX Plant": {
+            "scaleInDock": 1
+        },
+        "tilesets/map.json#TX Shadow Plant": {
+            "scaleInDock": 1
         },
         "tilesets/map.json#assets": {
             "scaleInDock": 1
@@ -113,6 +133,23 @@
         "tilesets/tiles.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 0.8401562499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.26780732750615,
+                "y": 320.1785382183374
+            }
+        },
+        "untitled.tmx#Grass": {
+            "scaleInDock": 1
+        },
+        "untitled.tmx#TX Plant": {
+            "scaleInDock": 1
+        },
+        "untitled.tmx#TX Shadow Plant": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
@@ -121,11 +158,17 @@
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
+        "map.tmx",
+        "tilesets/map.json",
+        "untitled.tmx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
-        "tilesets/map .json",
+        "map.tmx",
+        "untitled.tmx",
         "tilesets/map.json",
+        "tilesets/TX Plant.tsx",
+        "tilesets/map .json",
         "tilesets/map .tmx",
         "tilesets/tiles.tsx",
         "tilesets/assets.tsx"
