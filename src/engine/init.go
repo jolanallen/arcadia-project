@@ -76,7 +76,20 @@ func (e *Engine) InitEntities() {
         Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
     })
 
-    e.Player.Money = 0
+    e.Monsters = append(e.Monsters, entity.Monster{
+        Name:     "patate",
+        Position: rl.Vector2{X: 450, Y: 350},
+        Health:   20,
+        Damage:   5,
+        Loot:     []item.Item{},
+        Worth:    12,
+
+        IsAlive: true,
+        Sprite:  rl.LoadTexture("textures/entities/orc/Orc.png"),
+    })
+
+
+    e.Player.Money = 100
 }
 
 func (e *Engine) InitCamera() {
