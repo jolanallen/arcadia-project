@@ -32,7 +32,8 @@ type Engine struct {
 	Sprites map[string]rl.Texture2D
 	SpriteLife rl.Texture2D
 	SpriteMoney rl.Texture2D
-	
+	SpriteInventaire rl.Texture2D
+
 	Camera rl.Camera2D
 
 	MapJSON MapJSON

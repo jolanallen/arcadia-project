@@ -48,10 +48,18 @@ func (e *Engine) InGameRendering() {
 		rl.DrawTexturePro(
 			e.SpriteMoney, 
 			rl.NewRectangle(20, 0, 487, 95),
-			rl.NewRectangle(0, 130, 487, 95),
+			rl.NewRectangle(0, 120, 487, 95),
 			rl.NewVector2(0, 0),
 			0,
 			rl.White)
+
+			rl.DrawTexturePro(
+				e.SpriteInventaire, 
+				rl.NewRectangle(100, 0, 510, 451),
+				rl.NewRectangle(50, 800, 130, 100),
+				rl.NewVector2(0, 0),
+				0,
+				rl.White)
 }
 
 func (e *Engine) PauseRendering() {
