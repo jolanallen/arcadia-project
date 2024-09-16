@@ -53,9 +53,9 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 300, Y: 300},
+        Position:  rl.Vector2{X: 300, Y: 250},
         Health:    100,
-        Money:     1,
+        Money:     0,
         Speed:     1,
         Inventory: []item.Item{},
 
@@ -78,14 +78,14 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "patate",
-        Position: rl.Vector2{X: 250, Y: 250},
+        Position: rl.Vector2{X: 450, Y: 250},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
         Worth:    12,
 
         IsAlive: true,
-        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Death.png"),
+        Sprite:  rl.LoadTexture("textures/entities/orc/Orc.png"),
     })
 
 
