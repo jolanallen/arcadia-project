@@ -7,12 +7,16 @@
             "scaleInDock": 1
         },
         "map.tmx": {
-            "scale": 3,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 666.1666666666666,
-                "y": 191
+                "x": 318.5,
+                "y": 306
             }
+        },
+        "map.tmx#BG3": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map.tmx#Decors": {
             "scaleInDock": 1.5
@@ -20,8 +24,17 @@
         "map.tmx#ExampleTiles": {
             "scaleInDock": 1
         },
+        "map.tmx#Orc": {
+            "scaleInEditor": 1
+        },
+        "map.tmx#Orc-Attack02": {
+            "scaleInEditor": 5.5
+        },
         "map.tmx#Tileset": {
             "scaleInDock": 1.5
+        },
+        "map.tmx#sorcier": {
+            "scaleInEditor": 0.75
         },
         "tilesets/assets.tsx": {
             "scaleInDock": 1,
@@ -32,7 +45,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 800.4463455458433,
-                "y": 801.4382245366065
+                "y": 521.7283491414047
             }
         },
         "tilesets/map .json#assets": {
@@ -74,15 +87,23 @@
             "scaleInEditor": 1
         }
     },
+    "frame.defaultDuration": 220,
     "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
+    "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Assets",
     "map.lastUsedExportFilter": "Tous les Fichiers (*)",
     "openFiles": [
     ],
     "project": "map.tiled-project",
     "recentFiles": [
+        "tilesets/map .json",
         "tilesets/map.json",
         "tilesets/map .tmx",
         "tilesets/tiles.tsx",
         "tilesets/assets.tsx"
-    ]
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }
