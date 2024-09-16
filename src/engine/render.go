@@ -27,12 +27,13 @@ func (e *Engine) HomeRendering() {
 
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
+
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
-	} else {
-		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	} else {rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
+
 	if e.QuitButton.IsHovered {
 		rl.DrawTexturePro(e.QuitButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	} else {
@@ -43,11 +44,8 @@ func (e *Engine) HomeRendering() {
 
 func (e *Engine) InGameRendering() {
 	rl.ClearBackground(rl.Gray)
-
 	rl.BeginMode2D(e.Camera) // On commence le rendu camera
-
 	e.RenderMap()
-
 	e.RenderMonsters()
 	e.RenderPlayer()
 
@@ -58,6 +56,7 @@ func (e *Engine) InGameRendering() {
 	rl.DrawTextEx(vrm, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 50}, 40, 2, rl.Gold) // init.go
 	rl.DrawTextEx(vrm, "Heal:"+strconv.Itoa(e.Player.Health)+" / 100", rl.Vector2{X: 5, Y: 5}, 40, 2, rl.Red)
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
+
 }
 
 func (e *Engine) PauseRendering() {
