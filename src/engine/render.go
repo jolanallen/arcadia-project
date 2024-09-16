@@ -26,7 +26,8 @@ func (e *Engine) HomeRendering() {
 	}
 
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
-	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
+	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 50)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
+	rl.DrawText("KNIGHT'S QUEST", int32(rl.GetScreenWidth())/2-rl.MeasureText("KNIGHT'S QUEST", 100)/2, int32(rl.GetScreenHeight())/2- 50, 100, rl.Yellow)
 
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
