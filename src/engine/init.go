@@ -33,6 +33,7 @@ func (e *Engine) Init() {
     e.InitMap("textures/map/tilesets/map.json")
 
     e.SpriteLife = rl.LoadTexture("textures/entities/Life/barre_de_vie-removebg-preview.png")
+    e.SpriteMoney = rl.LoadTexture("textures/entities/money/Screenshot_from_2024-09-16_12-05-39-removebg-preview.png")
 }
 
 func (g *GameEngine) PrintScreenSize() {
