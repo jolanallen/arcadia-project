@@ -37,6 +37,7 @@ func (e *Engine) InGameRendering() {
 	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawTextEx(vrm, "Money:" + strconv.Itoa(e.Player.Money) + " /100", rl.Vector2{X: 5, Y: 50}, 40, 2, rl.Gold) // init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
+	
 	rl.DrawTexturePro(
         e.SpriteLife, 
         rl.NewRectangle(0, 0, 435, 100),
