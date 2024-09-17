@@ -148,6 +148,8 @@ func (e *Engine) MonsterCollisions() {
 			if monster.Name == "claude" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
+					e.Fight.CurrentMonster = monster
+					e.StateEngine = INFIGHT
 				} else {
 					///: ....
 				}
@@ -167,7 +169,8 @@ func (e *Engine) MonsterCollisions() {
 			if Monster2.Name == "patate" {
 				e.NormalTalk(Monster2, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
-					//lancer un combat en attendant juste dire combat refuse
+					e.Fight.CurrentMonster = Monster2
+					e.StateEngine = INFIGHT
 				}
 			}
 		} else {

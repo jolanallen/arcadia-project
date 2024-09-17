@@ -20,6 +20,7 @@ const (
 	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
+	INFIGHT engine = iota 
 )
 
 type Engine struct {
@@ -29,9 +30,11 @@ type Engine struct {
 	BackgroundFrameCount int
 	QuitButton  entity.Button
 	StartButton entity.Button
+	Fight Fight
 
 	Player   entity.Player
 	Monsters []entity.Monster
+	
 
 	Music       rl.Music
 	MusicVolume float32
@@ -48,4 +51,12 @@ type Engine struct {
 	IsRunning   bool
 	StateMenu   menu
 	StateEngine engine
+}
+
+type Fight struct {
+
+	StartedFight rl.Texture2D
+	Background rl.Texture2D
+	CurrentMonster entity.Monster
+
 }

@@ -1,6 +1,8 @@
 package engine
 
 import (
+	// "main/src/fight"
+
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -28,6 +30,9 @@ func (engine *Engine) Run() {
 			case PAUSE:
 				engine.PauseRendering()
 				engine.PauseLogic()
+
+			// case INFIGHT:
+			// 	fight.Fight(engine.Player, engine.Fight.CurrentMonster)
 
 			case GAMEOVER:
 				//...

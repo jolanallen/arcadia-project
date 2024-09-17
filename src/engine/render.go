@@ -70,6 +70,10 @@ func (e *Engine) PauseRendering() {
 	rl.EndDrawing()
 }
 
+func (e *Engine) FightRender() {
+	
+}
+
 func (e *Engine) RenderPlayer() {
 
 	rl.DrawTexturePro(
