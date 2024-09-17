@@ -40,7 +40,7 @@ func (e *Engine) HomeRendering() {
 		rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("QUIT", 1620, 925, 60, rl.White)
-	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
+	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1700, 30, 25, rl.Red)
 }
 
 func (e *Engine) InGameRendering() {
@@ -56,7 +56,7 @@ func (e *Engine) InGameRendering() {
 	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
-	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())/2-rl.MeasureText("fps:", 20)), 1600, 50, 20, rl.Black)
+	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
 
 	rl.DrawTexturePro(
 		e.SpriteLife,

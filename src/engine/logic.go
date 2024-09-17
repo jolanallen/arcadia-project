@@ -71,7 +71,7 @@ func (e *Engine) InGameLogic() {
 
 	const jump float32 = 12.0
 	const poid float32 = 1
-	const sol float32 = 380.0 // hauteur sol
+	const sol float32 = 409.0 // hauteur sol
 
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
