@@ -71,12 +71,12 @@ func (e *Engine) InGameLogic() {
 
 	const jump float32 = 12.0
 	const poid float32 = 1
-	const sol float32 = 250.0 // hauteur sol
+	const sol float32 = 234.0 // hauteur sol
 
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
 			e.Player.Jumping = true
-			e.Player.Chute = -jump // saute avec une vitesse de -10 sur l'axe y
+			e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
 		}
 	}
 
@@ -91,23 +91,22 @@ func (e *Engine) InGameLogic() {
 		}
 	}
 
-	// Sprint du personnage
-	if rl.IsKeyDown(rl.KeyLeftShift) {
-		e.Player.Speed = 2
-	} else {
-		e.Player.Speed = 1
-	}
+	
 
 	// Sprint du personnage
 
 	if rl.IsKeyDown(rl.KeyLeftShift) {
 		e.Player.Speed = 2
+			
+
+	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
+		e.Player.Speed = 3
 	} else {
 		e.Player.Speed = 1
 	}
 
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 170, Y: e.Player.Position.Y + 70} // Bouger la caméra
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X +490, Y: e.Player.Position.Y + 20} // Bouger la caméra
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 
 	// Menus
