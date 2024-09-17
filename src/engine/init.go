@@ -53,7 +53,7 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 200, Y: 250},
+        Position:  rl.Vector2{X: 1, Y: 250},
         Health:    100,
         Money:     0,
         Speed:     1,
@@ -66,7 +66,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "bee guard",
-        Position: rl.Vector2{X: 400, Y: 250},
+        Position: rl.Vector2{X: 1000, Y: 220},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
@@ -78,7 +78,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "Ralouf",
-        Position: rl.Vector2{X: 250, Y: 250},
+        Position: rl.Vector2{X: 1150, Y: 290},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
