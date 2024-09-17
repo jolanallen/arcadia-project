@@ -33,6 +33,7 @@ type Engine struct {
 	Player   entity.Player
 	Monsters []entity.Monster
 
+
 	Music       rl.Music
 	MusicVolume float32
 
@@ -40,6 +41,7 @@ type Engine struct {
 	SpriteLife       rl.Texture2D
 	SpriteMoney      rl.Texture2D
 	SpriteInventaire rl.Texture2D
+	SpriteRalouf     rl.Texture2D
 
 	Camera rl.Camera2D
 

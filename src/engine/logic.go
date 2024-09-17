@@ -98,7 +98,7 @@ func (e *Engine) InGameLogic() {
 		e.Player.Speed = 1
 	}
 
-	e.Player.UpdatePlayer()
+	
 
 	// Sprint du personnage
 

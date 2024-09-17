@@ -65,7 +65,7 @@ func (e *Engine) InitEntities() {
     }
 
     e.Monsters = append(e.Monsters, entity.Monster{
-        Name:     "claude",
+        Name:     "bee guard",
         Position: rl.Vector2{X: 400, Y: 250},
         Health:   20,
         Damage:   5,
@@ -73,11 +73,11 @@ func (e *Engine) InitEntities() {
         Worth:    12,
 
         IsAlive: true,
-        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png"),
     })
 
     e.Monsters = append(e.Monsters, entity.Monster{
-        Name:     "patate",
+        Name:     "Ralouf",
         Position: rl.Vector2{X: 250, Y: 250},
         Health:   20,
         Damage:   5,
@@ -85,7 +85,7 @@ func (e *Engine) InitEntities() {
         Worth:    12,
 
         IsAlive: true,
-        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Death.png"),
+        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"),
     })
 
 
