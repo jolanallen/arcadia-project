@@ -6,7 +6,7 @@ import (
 
 func (e *Engine) Load() {
 	// Chargement des textures du personnage
-	e.Player.Sprite = rl.LoadTexture("textures/entities/soldier/Soldier-Idle.png")
+	e.Player.Sprite = rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Character/Run/Run.gif")
 	e.StartButton.Texture = rl.LoadTexture("textures/img/ButtonGame.png")
 	e.StartButton.HoverTexture = rl.LoadTexture("textures/img/ButtonHover.png")
 	e.Background = rl.LoadTexture("textures/img/bganim2.png")
