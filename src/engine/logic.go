@@ -98,8 +98,6 @@ func (e *Engine) InGameLogic() {
 		e.Player.Speed = 1
 	}
 
-	
-
 	// Sprint du personnage
 
 	if rl.IsKeyDown(rl.KeyLeftShift) {
@@ -145,12 +143,13 @@ func (e *Engine) MonsterCollisions() {
 			monster.Position.Y > e.Player.Position.Y-50 &&
 			monster.Position.Y < e.Player.Position.Y+50 {
 
-			if monster.Name == "claude" {
+			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
 				} else {
 					///: ....
 				}
+				
 			}
 		} else {
 			////.....

@@ -87,6 +87,17 @@ func (e *Engine) InitEntities() {
         IsAlive: true,
         Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"),
     })
+    e.Monsters = append(e.Monsters, entity.Monster{
+        Name:     "snails",
+        Position: rl.Vector2{X: 350, Y: 250},
+        Health:   20,
+        Damage:   5,
+        Loot:     []item.Item{},
+        Worth:    12,
+
+        IsAlive: true,
+        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png"),
+    })
 
 
     e.Player.Money = 100
