@@ -90,7 +90,11 @@ func (e *Engine) InGameLogic() {
 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
 		}
 	}
-			
+
+	
+
+	// Sprint du personnage
+
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
@@ -135,12 +139,13 @@ func (e *Engine) MonsterCollisions() {
 			monster.Position.Y > e.Player.Position.Y-50 &&
 			monster.Position.Y < e.Player.Position.Y+50 {
 
-			if monster.Name == "claude" {
+			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
 				} else {
 					///: ....
 				}
+				
 			}
 		} else {
 			////.....
