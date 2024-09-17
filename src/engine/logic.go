@@ -27,7 +27,7 @@ func (e *Engine) HomeLogic() {
 	}
 	if !(rl.GetMousePosition().X > 1550 && rl.GetMousePosition().X < 1850 && rl.GetMousePosition().Y > 700 && rl.GetMousePosition().Y < 900) {
 		e.StartButton.IsHovered = false
-	}
+	} 
 
 	if rl.GetMousePosition().X > 1550 && rl.GetMousePosition().X < 1850 && rl.GetMousePosition().Y > 850 && rl.GetMousePosition().Y < 1050 {
 		e.QuitButton.IsHovered = true
