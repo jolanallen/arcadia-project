@@ -3,11 +3,44 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map.tmx",
     "expandedProjectPaths": [
+        "."
     ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
+        "map.tmx": {
+            "expandedGroupLayers": [
+                2
+            ],
+            "scale": 4,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 813.125,
+                "y": 311.25
+            }
+        },
+        "map.tmx#Background": {
+            "scaleInDock": 1.5
+        },
+        "map.tmx#Background1": {
+            "scaleInDock": 0.33
+        },
+        "map.tmx#Buildings": {
+            "scaleInDock": 1
+        },
+        "map.tmx#Hive": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "map.tmx#Props-Rocks": {
+            "scaleInDock": 1
+        },
+        "map.tmx#Tiles": {
+            "scaleInDock": 0.75
+        }
     },
+    "frame.defaultDuration": 30,
     "last.exportedFilePath": "/home/jolan/arcadia-project/textures/map/tilesets",
     "last.imagePath": "/home/jolan/arcadia-project/textures/map/tilesets",
     "map.lastUsedExportFilter": "Tous les Fichiers (*)",
@@ -16,9 +49,11 @@
     "map.tileWidth": 16,
     "map.width": 90,
     "openFiles": [
+        "map.tmx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
+        "map.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
