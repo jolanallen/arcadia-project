@@ -25,12 +25,10 @@ func (e *Engine) HomeRendering() {
 	}
 
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
-	rl.DrawTexturePro(e.Title, rl.NewRectangle(0, 0, 1472, 832), rl.NewRectangle(450, 300, 1000,600), rl.NewVector2(0, 0),0, rl.White)
+	rl.DrawTexturePro(e.Title, rl.NewRectangle(0, 0, 1472, 832), rl.NewRectangle(450, 300, 1000, 600), rl.NewVector2(0, 0), 0, rl.White)
 
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
-	} else {
-		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	} else {
 		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
@@ -60,14 +58,7 @@ func (e *Engine) InGameRendering() {
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
 
-
 	rl.DrawTexturePro(
-		e.SpriteLife,
-		rl.NewRectangle(0, 0, 435, 100),
-		rl.NewRectangle(0, 0, 435, 100),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
 		e.SpriteLife,
 		rl.NewRectangle(0, 0, 435, 100),
 		rl.NewRectangle(0, 0, 435, 100),
@@ -132,29 +123,29 @@ func (e *Engine) RenderPlayer() {
 func (e *Engine) RenderMonsters() {
 	for _, monster := range e.Monsters {
 		if monster.Name == "Ralouf" {
-		if monster.Name == "Ralouf" {
-			rl.DrawTexturePro(
-				monster.Sprite,
-				rl.NewRectangle(0, 0, 40, 35),
-				rl.NewRectangle(monster.Position.X, monster.Position.Y, 40, 35),
-				rl.Vector2{X: 0, Y: 0},
-				0,
-				rl.White,
-			)
+			if monster.Name == "Ralouf" {
+				rl.DrawTexturePro(
+					monster.Sprite,
+					rl.NewRectangle(0, 0, 40, 35),
+					rl.NewRectangle(monster.Position.X, monster.Position.Y, 40, 35),
+					rl.Vector2{X: 0, Y: 0},
+					0,
+					rl.White,
+				)
+			}
+			if monster.Name == "bee guard" {
+				rl.DrawTexturePro(
+					monster.Sprite,
+					rl.NewRectangle(0, 0, 60, 70),
+					rl.NewRectangle(monster.Position.X, monster.Position.Y, 60, 70),
+					rl.Vector2{X: 0, Y: 0},
+					0,
+					rl.White,
+				)
+
+			}
+
 		}
-		if monster.Name == "bee guard" {
-			rl.DrawTexturePro(
-				monster.Sprite,
-				rl.NewRectangle(0, 0, 60, 70),
-				rl.NewRectangle(monster.Position.X, monster.Position.Y, 60, 70),
-				rl.Vector2{X: 0, Y: 0},
-				0,
-				rl.White,
-			)
-
-
-		}
-
 	}
 }
 
