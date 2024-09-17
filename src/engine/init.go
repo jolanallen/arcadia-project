@@ -31,6 +31,10 @@ func (e *Engine) Init() {
     e.InitCamera()
     e.InitMusic()
     e.InitMap("textures/map/tilesets/map.json")
+
+    e.SpriteLife = rl.LoadTexture("textures/entities/Life/barre_de_vie-removebg-preview.png")
+    e.SpriteMoney = rl.LoadTexture("textures/entities/money/Screenshot_from_2024-09-16_12-05-39-removebg-preview.png")
+    e.SpriteInventaire = rl.LoadTexture("textures/entities/inventaire/Screenshot_from_2024-09-16_12-20-00-removebg-preview(1).png")
 }
 
 func (g *GameEngine) PrintScreenSize() {
@@ -49,9 +53,9 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 300, Y: 300},
+        Position:  rl.Vector2{X: 300, Y: 250},
         Health:    100,
-        Money:     1000,
+        Money:     0,
         Speed:     1,
         Inventory: []item.Item{},
 
@@ -61,18 +65,31 @@ func (e *Engine) InitEntities() {
     }
 
     e.Monsters = append(e.Monsters, entity.Monster{
-        Name:     "claude",
-        Position: rl.Vector2{X: 400, Y: 320},
+        Name:     "bee guard",
+        Position: rl.Vector2{X: 400, Y: 250},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
         Worth:    12,
 
         IsAlive: true,
-        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
+        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png"),
     })
 
-    e.Player.Money = 0
+    e.Monsters = append(e.Monsters, entity.Monster{
+        Name:     "Ralouf",
+        Position: rl.Vector2{X: 250, Y: 250},
+        Health:   20,
+        Damage:   5,
+        Loot:     []item.Item{},
+        Worth:    12,
+
+        IsAlive: true,
+        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"),
+    })
+
+
+    e.Player.Money = 100
 }
 
 func (e *Engine) InitCamera() {

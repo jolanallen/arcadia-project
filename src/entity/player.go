@@ -13,6 +13,8 @@ type Player struct {
 	Money     int
 	Speed     float32
 	Inventory []item.Item
+	Jumping   bool
+	Chute     float32
 
 	IsAlive bool
 
@@ -33,15 +35,6 @@ func (p *Player) ToString() {
     \n`, p.Health, p.Money, p.Inventory)
 }
 
-func (p *Player) UpdatePlayer() {
-	p.UpdateHealth()
-}
-func (p *Player) UpdateHealth() {
-
-}
-func (p *Player) UpdateMoney() {
-
-}
 func (p *Player) UpdateInventory() {
 
 }
