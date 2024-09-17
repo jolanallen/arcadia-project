@@ -53,7 +53,7 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 300, Y: 250},
+        Position:  rl.Vector2{X: 200, Y: 250},
         Health:    100,
         Money:     0,
         Speed:     1,
@@ -89,7 +89,7 @@ func (e *Engine) InitEntities() {
     })
 
 
-    e.Player.Money = 100
+    e.Player.Money = 1
 }
 
 func (e *Engine) InitCamera() {

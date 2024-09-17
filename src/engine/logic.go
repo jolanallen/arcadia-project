@@ -71,7 +71,7 @@ func (e *Engine) InGameLogic() {
 
 	const jump float32 = 12.0
 	const poid float32 = 1
-	const sol float32 = 250.0 // hauteur sol
+	const sol float32 = 230.0 // hauteur sol
 
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
@@ -90,20 +90,10 @@ func (e *Engine) InGameLogic() {
 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
 		}
 	}
+			
 
-	// Sprint du personnage
-	if rl.IsKeyDown(rl.KeyLeftShift) {
-		e.Player.Speed = 2
-	} else {
-		e.Player.Speed = 1
-	}
-
-	
-
-	// Sprint du personnage
-
-	if rl.IsKeyDown(rl.KeyLeftShift) {
-		e.Player.Speed = 2
+	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
+		e.Player.Speed = 3
 	} else {
 		e.Player.Speed = 1
 	}
