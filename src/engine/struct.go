@@ -41,7 +41,7 @@ type Engine struct {
 	SpriteLife       rl.Texture2D
 	SpriteMoney      rl.Texture2D
 	SpriteInventaire rl.Texture2D
-	SpriteRalouf     rl.Texture2D
+	
 
 	Camera rl.Camera2D
 

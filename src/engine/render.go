@@ -31,6 +31,8 @@ func (e *Engine) HomeRendering() {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	} else {
 		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	} else {
+		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
 
@@ -54,10 +56,18 @@ func (e *Engine) InGameRendering() {
 	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
 	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
 
+
 	rl.DrawTexturePro(
+		e.SpriteLife,
+		rl.NewRectangle(0, 0, 435, 100),
+		rl.NewRectangle(0, 0, 435, 100),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 		e.SpriteLife,
 		rl.NewRectangle(0, 0, 435, 100),
 		rl.NewRectangle(0, 0, 435, 100),
@@ -72,7 +82,21 @@ func (e *Engine) InGameRendering() {
 		rl.NewVector2(0, 0),
 		0,
 		rl.White)
+	rl.DrawTexturePro(
+		e.SpriteMoney,
+		rl.NewRectangle(20, 0, 487, 95),
+		rl.NewRectangle(0, 120, 487, 95),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 
+	rl.DrawTexturePro(
+		e.SpriteInventaire,
+		rl.NewRectangle(100, 0, 510, 451),
+		rl.NewRectangle(50, 800, 130, 100),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 	rl.DrawTexturePro(
 		e.SpriteInventaire,
 		rl.NewRectangle(100, 0, 510, 451),
@@ -97,7 +121,7 @@ func (e *Engine) RenderPlayer() {
 	rl.DrawTexturePro(
 		e.Player.Sprite,
 		rl.NewRectangle(0, 0, 100, 100),
-		rl.NewRectangle(e.Player.Position.X, e.Player.Position.Y, 150, 150),
+		rl.NewRectangle(e.Player.Position.X, e.Player.Position.Y, 90, 90),
 		rl.Vector2{X: 0, Y: 0},
 		0,
 		rl.White,
@@ -107,6 +131,7 @@ func (e *Engine) RenderPlayer() {
 
 func (e *Engine) RenderMonsters() {
 	for _, monster := range e.Monsters {
+		if monster.Name == "Ralouf" {
 		if monster.Name == "Ralouf" {
 			rl.DrawTexturePro(
 				monster.Sprite,
@@ -126,6 +151,7 @@ func (e *Engine) RenderMonsters() {
 				0,
 				rl.White,
 			)
+
 
 		}
 
