@@ -76,7 +76,7 @@ func (e *Engine) InGameLogic() {
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
 			e.Player.Jumping = true
-			e.Player.Chute = -jump // saute avec une vitesse de -10 sur l'axe y
+			e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
 		}
 	}
 
