@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"main/src/entity"
 
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -26,12 +25,12 @@ func (e *Engine) HomeRendering() {
 	}
 
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
-	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 50)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("KNIGHT'S QUEST", int32(rl.GetScreenWidth())/2-rl.MeasureText("KNIGHT'S QUEST", 100)/2, int32(rl.GetScreenHeight())/2- 50, 100, rl.Black)
+	rl.DrawTexturePro(e.Title, rl.NewRectangle(0, 0, 1472, 832), rl.NewRectangle(450, 300, 1000,600), rl.NewVector2(0, 0),0, rl.White)
 
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
-	} else {rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
+	} else {
+		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
 
@@ -54,33 +53,33 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black)                             // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
-	
+
 	rl.DrawTexturePro(
-        e.SpriteLife, 
-        rl.NewRectangle(0, 0, 435, 100),
-        rl.NewRectangle(0, 0, 435, 100),
-        rl.NewVector2(0, 0),
-        0,
-        rl.White)
+		e.SpriteLife,
+		rl.NewRectangle(0, 0, 435, 100),
+		rl.NewRectangle(0, 0, 435, 100),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 
-		rl.DrawTexturePro(
-			e.SpriteMoney, 
-			rl.NewRectangle(20, 0, 487, 95),
-			rl.NewRectangle(0, 120, 487, 95),
-			rl.NewVector2(0, 0),
-			0,
-			rl.White)
+	rl.DrawTexturePro(
+		e.SpriteMoney,
+		rl.NewRectangle(20, 0, 487, 95),
+		rl.NewRectangle(0, 120, 487, 95),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 
-			rl.DrawTexturePro(
-				e.SpriteInventaire, 
-				rl.NewRectangle(100, 0, 510, 451),
-				rl.NewRectangle(50, 800, 130, 100),
-				rl.NewVector2(0, 0),
-				0,
-				rl.White)
+	rl.DrawTexturePro(
+		e.SpriteInventaire,
+		rl.NewRectangle(100, 0, 510, 451),
+		rl.NewRectangle(50, 800, 130, 100),
+		rl.NewVector2(0, 0),
+		0,
+		rl.White)
 }
 
 func (e *Engine) PauseRendering() {
@@ -108,7 +107,7 @@ func (e *Engine) RenderPlayer() {
 
 func (e *Engine) RenderMonsters() {
 	for _, monster := range e.Monsters {
-		if monster.Name == "Ralouf"{
+		if monster.Name == "Ralouf" {
 			rl.DrawTexturePro(
 				monster.Sprite,
 				rl.NewRectangle(0, 0, 40, 35),
@@ -127,14 +126,11 @@ func (e *Engine) RenderMonsters() {
 				0,
 				rl.White,
 			)
-		
+
 		}
 
 	}
 }
-
-
-
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 	rl.BeginMode2D(e.Camera)

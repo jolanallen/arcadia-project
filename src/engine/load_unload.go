@@ -12,6 +12,8 @@ func (e *Engine) Load() {
 	e.Background = rl.LoadTexture("textures/img/bganim2.png")
 	e.QuitButton.Texture = rl.LoadTexture("textures/img/ButtonGame.png")
 	e.QuitButton.HoverTexture = rl.LoadTexture("textures/img/ButtonHover.png")
+	e.Title = rl.LoadTexture("textures/img/Title.png")
+
 }
 
 func (e *Engine) Unload() {
