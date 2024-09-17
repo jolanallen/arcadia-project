@@ -9,7 +9,7 @@ import (
 )
 
 const (
-    ScreenWidth  = 1800
+    ScreenWidth  = 1920
     ScreenHeight = 1080
 )
 
@@ -55,7 +55,7 @@ func (e *Engine) InitEntities() {
     e.Player = entity.Player{
         Position:  rl.Vector2{X: 300, Y: 300},
         Health:    100,
-        Money:     1000,
+        Money:     1,
         Speed:     1,
         Inventory: []item.Item{},
 
@@ -66,7 +66,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "claude",
-        Position: rl.Vector2{X: 400, Y: 320},
+        Position: rl.Vector2{X: 400, Y: 250},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
@@ -76,7 +76,20 @@ func (e *Engine) InitEntities() {
         Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Idle.png"),
     })
 
-    e.Player.Money = 0
+    e.Monsters = append(e.Monsters, entity.Monster{
+        Name:     "patate",
+        Position: rl.Vector2{X: 250, Y: 250},
+        Health:   20,
+        Damage:   5,
+        Loot:     []item.Item{},
+        Worth:    12,
+
+        IsAlive: true,
+        Sprite:  rl.LoadTexture("textures/entities/orc/Orc-Death.png"),
+    })
+
+
+    e.Player.Money = 100
 }
 
 func (e *Engine) InitCamera() {
