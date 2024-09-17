@@ -27,7 +27,7 @@ func (e *Engine) HomeRendering() {
 
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawText("Home Menu", int32(rl.GetScreenWidth())/2-rl.MeasureText("Home Menu", 50)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("KNIGHT'S QUEST", int32(rl.GetScreenWidth())/2-rl.MeasureText("KNIGHT'S QUEST", 100)/2, int32(rl.GetScreenHeight())/2- 50, 100, rl.Yellow)
+	rl.DrawText("KNIGHT'S QUEST", int32(rl.GetScreenWidth())/2-rl.MeasureText("KNIGHT'S QUEST", 100)/2, int32(rl.GetScreenHeight())/2- 50, 100, rl.Black)
 
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
@@ -41,6 +41,7 @@ func (e *Engine) HomeRendering() {
 		rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	rl.DrawText("QUIT", 1620, 925, 60, rl.White)
+	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
 }
 
 func (e *Engine) InGameRendering() {
@@ -57,7 +58,7 @@ func (e *Engine) InGameRendering() {
 	rl.DrawTextEx(vrm, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 50}, 40, 2, rl.Gold) // init.go
 	rl.DrawTextEx(vrm, "Heal:"+strconv.Itoa(e.Player.Health)+" / 100", rl.Vector2{X: 5, Y: 5}, 40, 2, rl.Red)
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
-
+	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1600, 50, 50, rl.Black)
 }
 
 func (e *Engine) PauseRendering() {
