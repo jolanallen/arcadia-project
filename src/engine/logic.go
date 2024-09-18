@@ -147,12 +147,12 @@ func (e *Engine) MonsterCollisions() {
 				}
 				
 			}
-		}
-		if monster.Name == "Ralouf" {
-			e.NormalTalk(monster, "Press E for FIGHT!!")
-			if rl.IsKeyPressed(rl.KeyE) {
+			if monster.Name == "Ralouf" {
+				e.NormalTalk(monster, "Press E for FIGHT!!")
+				if rl.IsKeyPressed(rl.KeyE) {
 				/// lancement combat
-			} 
+				} 
+			}
 		}
 	}
 }
