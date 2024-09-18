@@ -60,14 +60,17 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
-	// Mouvement
-	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
-		e.Player.Position.X -= e.Player.Speed
+	if e.Player.Position.X  >= 90  {
+		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
+			e.Player.Position.X -= e.Player.Speed
+		}
 	}
-	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
-		e.Player.Position.X += e.Player.Speed
+	if e.Player.Position.X <= 1500 {
+		if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
+			e.Player.Position.X += e.Player.Speed
+		}
 	}
-	// Saut du personnage
+		// Saut du personnage
 
 	const jump float32 = 12.0
 	const poid float32 = 1
