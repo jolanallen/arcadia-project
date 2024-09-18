@@ -87,11 +87,9 @@ func (e *Engine) InGameLogic() {
 	if e.Player.Jumping {
 		e.Player.Position.Y += e.Player.Chute
 		e.Player.Chute += poid 
-		sol = 410
-	if  e.Player.Position.Y >= sol {
 		e.Player.Position.Y = sol //// Rester au sol
 		e.Player.Jumping = false
-		}//  le poids pour faire redescendre le personnage
+	}//  le poids pour faire redescendre le personnage
 		
 	if e.Player.Position.X >= 80 && e.Player.Position.X <= 180 {
 		if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
@@ -108,9 +106,9 @@ func (e *Engine) InGameLogic() {
 		sol = 320
 		e.Player.Position.Y = sol //// Rester au sol
 		e.Player.Jumping = false
-		}
-		
 	}
+		
+	
 
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
