@@ -72,42 +72,27 @@ func (e *Engine) InGameLogic() {
 	}
 		// Saut du personnage
 
-	const jump float32 = 12.0
-	const poid float32 = 1
-	var sol float32 = 410 // hauteur sol
-
-	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
-		if !e.Player.Jumping {
-			e.Player.Jumping = true
-			e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
-		}
-	}
-
-	// gestion de la chute
-	if e.Player.Jumping {
-		e.Player.Position.Y += e.Player.Chute
-		e.Player.Chute += poid 
-		e.Player.Position.Y = sol //// Rester au sol
-		e.Player.Jumping = false
-	}//  le poids pour faire redescendre le personnage
-		
-	if e.Player.Position.X >= 80 && e.Player.Position.X <= 180 {
+		const jump float32 = 12.0
+		const poid float32 = 1
+		const sol float32 = 410 // hauteur sol
+	
 		if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 			if !e.Player.Jumping {
 				e.Player.Jumping = true
 				e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
 			}
 		}
-	}
-
-	if e.Player.Jumping {
-		e.Player.Position.Y += e.Player.Chute
-		e.Player.Chute += poid 
-		sol = 320
-		e.Player.Position.Y = sol //// Rester au sol
-		e.Player.Jumping = false
-	}
-		
+	
+		// gestion de la chute
+		if e.Player.Jumping {
+			e.Player.Position.Y += e.Player.Chute
+			e.Player.Chute += poid //  le poids pour faire redescendre le personnage
+	
+			if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
+				e.Player.Position.Y = sol //// Rester au sol
+				e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
+			}
+		}
 	
 
 
