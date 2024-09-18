@@ -43,12 +43,12 @@ func (g *GameEngine) PrintScreenSize() {
 
 // ---Init Window--- //
 func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
-    g.ScreenWidth = x
-    g.ScreenHeight = y
+    g.ScreenWidth = int32(rl.GetScreenWidth())
+    g.ScreenHeight = int32(rl.GetScreenHeight())
     g.Title = title
     rl.InitWindow(g.ScreenWidth, g.ScreenHeight, g.Title)
     rl.SetTargetFPS(60)
-    rl.ToggleFullscreen()
+    //rl.ToggleFullscreen()
 }
 
 func (e *Engine) InitEntities() {

@@ -91,11 +91,6 @@ func (e *Engine) InGameLogic() {
 		}
 	}
 
-	
-
-	// Sprint du personnage
-
-
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
 	} else {

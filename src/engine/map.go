@@ -52,9 +52,13 @@ type MapJSON struct {
 	Type             string    `json:"type"`
 	Version          string    `json:"version"`
 	Width            int       `json:"width"`
+
 }
 
 func (e *Engine) InitMap(mapFile string) {
+	
+	
+	
 	/*
 		Naive & slow map loader, render all layers everywhere each frame:
 		- Parse JSON
