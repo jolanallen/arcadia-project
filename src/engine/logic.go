@@ -2,7 +2,7 @@ package engine
 
 import (
 	"main/src/entity"
-
+	"fmt"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -108,6 +108,12 @@ func (e *Engine) InGameLogic() {
 
 	e.CheckCollisions()
 
+
+	if rl.IsKeyPressed(rl.KeyE) {
+		e.StateEngine = INFIGHT
+		fmt.Println("FIGHT LA PUTAIN DE TA MERE")
+	}
+
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
 		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-07-Simon_s-In-There-Somewhere.mp3")
@@ -124,6 +130,10 @@ func (e *Engine) CheckCollisions() {
 }
 func (e *Engine) ZoneCollisions() {
 	// Ajout des colisions sur les zone dite interdit de la map !!!
+}
+
+func (e *Engine) FightLogic() {
+	
 }
 
 func (e *Engine) MonsterCollisions() {

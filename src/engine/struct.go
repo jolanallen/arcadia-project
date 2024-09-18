@@ -20,6 +20,7 @@ const (
 	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
+	INFIGHT  engine = iota
 )
 
 type Engine struct {
@@ -41,7 +42,6 @@ type Engine struct {
 	SpriteLife       rl.Texture2D
 	SpriteMoney      rl.Texture2D
 	SpriteInventaire rl.Texture2D
-	
 
 	Camera rl.Camera2D
 
