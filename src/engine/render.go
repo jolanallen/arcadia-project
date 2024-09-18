@@ -150,7 +150,7 @@ func (e *Engine) RenderMonsters() {
 }
 
 func (e *Engine) FightRendering() {
-	rl.DrawTexturePro()
+	rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 840, 452), rl.NewRectangle(0, 0, 840, 452), rl.NewVector2(0, 0), 0, rl.White)
 }
 
 

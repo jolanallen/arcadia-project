@@ -50,4 +50,5 @@ type Engine struct {
 	IsRunning   bool
 	StateMenu   menu
 	StateEngine engine
+	StartedFight rl.Texture2D
 }

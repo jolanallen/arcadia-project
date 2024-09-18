@@ -13,7 +13,7 @@ func (e *Engine) Load() {
 	e.QuitButton.Texture = rl.LoadTexture("textures/img/ButtonGame.png")
 	e.QuitButton.HoverTexture = rl.LoadTexture("textures/img/ButtonHover.png")
 	e.Title = rl.LoadTexture("textures/img/Title.png")
-	e.FightStarted = rl.LoadTexture("textures/img/Fight.jpeg")
+	e.StartedFight = rl.LoadTexture("textures/img/StartedFight.png")
 }
 
 
