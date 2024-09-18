@@ -88,6 +88,7 @@ func (e *Engine) InGameLogic() {
 		e.Player.Position.Y += e.Player.Chute
 		e.Player.Chute += poid 
 		sol = 410
+	if  e.Player.Position.Y >= sol {
 		e.Player.Position.Y = sol //// Rester au sol
 		e.Player.Jumping = false
 		}//  le poids pour faire redescendre le personnage
@@ -99,6 +100,7 @@ func (e *Engine) InGameLogic() {
 				e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
 			}
 		}
+	}
 
 	if e.Player.Jumping {
 		e.Player.Position.Y += e.Player.Chute
