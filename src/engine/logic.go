@@ -71,7 +71,7 @@ func (e *Engine) InGameLogic() {
 
 	const jump float32 = 12.0
 	const poid float32 = 1
-	const sol float32 = 409.0 // hauteur sol
+	const sol float32 = 410 // hauteur sol
 
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
@@ -99,7 +99,7 @@ func (e *Engine) InGameLogic() {
 
 	// Camera
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X +490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
+	e.Camera.Offset = rl.Vector2{X: 1980 / 2, Y: 1210 / 2 }                   // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {

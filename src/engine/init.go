@@ -1,16 +1,11 @@
 package engine
 
 import (
-    "fmt"
-    "main/src/entity"
-    "main/src/item"
+	"fmt"
+	"main/src/entity"
+	"main/src/item"
 
-    rl "github.com/gen2brain/raylib-go/raylib"
-)
-
-const (
-    ScreenWidth  = 1920
-    ScreenHeight = 1080
+	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type GameEngine struct {
@@ -20,9 +15,9 @@ type GameEngine struct {
 }
 
 func (e *Engine) Init() {
-    rl.InitWindow(ScreenWidth, ScreenHeight, "Arcadia")
-
-    // Initialisation des variables de l'engine
+   var X int32  = int32(rl.GetScreenWidth())
+    var Y int32 = int32(rl.GetScreenHeight())
+    rl.InitWindow(Y, X, "Arcadia") // Initialisation des variables de l'engine
     e.IsRunning = true
     e.Sprites = make(map[string]rl.Texture2D)
 
@@ -43,17 +38,17 @@ func (g *GameEngine) PrintScreenSize() {
 
 // ---Init Window--- //
 func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
-    g.ScreenWidth = int32(rl.GetScreenWidth())
-    g.ScreenHeight = int32(rl.GetScreenHeight())
+    g.ScreenWidth = x
+    g.ScreenHeight = y
     g.Title = title
     rl.InitWindow(g.ScreenWidth, g.ScreenHeight, g.Title)
     rl.SetTargetFPS(60)
-    //rl.ToggleFullscreen()
+    rl.ToggleFullscreen()
 }
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 1, Y: 250},
+        Position:  rl.Vector2{X: 130, Y: 410},
         Health:    100,
         Money:     0,
         Speed:     1,
@@ -66,7 +61,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "bee guard",
-        Position: rl.Vector2{X: 1000, Y: 220},
+        Position: rl.Vector2{X: 900, Y: 290},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
