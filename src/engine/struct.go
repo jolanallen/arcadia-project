@@ -35,7 +35,6 @@ type Engine struct {
 
 	Player   entity.Player
 	Monsters []entity.Monster
-	Collisions []entity.Colision
 
 	Music       rl.Music
 	MusicVolume float32

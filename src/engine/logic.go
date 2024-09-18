@@ -60,18 +60,21 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
-	// Mouvement
-	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
-		e.Player.Position.X -= e.Player.Speed
+	if e.Player.Position.X  >= 90  {
+		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
+			e.Player.Position.X -= e.Player.Speed
+		}
 	}
-	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
-		e.Player.Position.X += e.Player.Speed
+	if e.Player.Position.X <= 1500 {
+		if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
+			e.Player.Position.X += e.Player.Speed
+		}
 	}
-	// Saut du personnage
+		// Saut du personnage
 
 	const jump float32 = 12.0
 	const poid float32 = 1
-	const sol float32 = 410 // hauteur sol
+	var sol float32 = 410 // hauteur sol
 
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if !e.Player.Jumping {
@@ -83,13 +86,30 @@ func (e *Engine) InGameLogic() {
 	// gestion de la chute
 	if e.Player.Jumping {
 		e.Player.Position.Y += e.Player.Chute
-		e.Player.Chute += poid //  le poids pour faire redescendre le personnage
-
-		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
-			e.Player.Position.Y = sol //// Rester au sol
-			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
+		e.Player.Chute += poid 
+		e.Player.Position.Y = sol //// Rester au sol
+		e.Player.Jumping = false
+	}//  le poids pour faire redescendre le personnage
+		
+	if e.Player.Position.X >= 80 && e.Player.Position.X <= 180 {
+		if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
+			if !e.Player.Jumping {
+				e.Player.Jumping = true
+				e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
+			}
 		}
 	}
+
+	if e.Player.Jumping {
+		e.Player.Position.Y += e.Player.Chute
+		e.Player.Chute += poid 
+		sol = 320
+		e.Player.Position.Y = sol //// Rester au sol
+		e.Player.Jumping = false
+	}
+		
+	
+
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
