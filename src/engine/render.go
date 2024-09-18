@@ -53,8 +53,7 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D() // On finit le rendu camera
 	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
-	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.Black) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
 
@@ -70,21 +69,6 @@ func (e *Engine) InGameRendering() {
 		e.SpriteMoney,
 		rl.NewRectangle(20, 0, 487, 95),
 		rl.NewRectangle(0, 120, 487, 95),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
-	rl.DrawTexturePro(
-		e.SpriteMoney,
-		rl.NewRectangle(20, 0, 487, 95),
-		rl.NewRectangle(0, 120, 487, 95),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
-
-	rl.DrawTexturePro(
-		e.SpriteInventaire,
-		rl.NewRectangle(100, 0, 510, 451),
-		rl.NewRectangle(50, 800, 130, 100),
 		rl.NewVector2(0, 0),
 		0,
 		rl.White)
@@ -123,28 +107,24 @@ func (e *Engine) RenderPlayer() {
 func (e *Engine) RenderMonsters() {
 	for _, monster := range e.Monsters {
 		if monster.Name == "Ralouf" {
-			if monster.Name == "Ralouf" {
-				rl.DrawTexturePro(
-					monster.Sprite,
-					rl.NewRectangle(0, 0, 40, 35),
-					rl.NewRectangle(monster.Position.X, monster.Position.Y, 40, 35),
-					rl.Vector2{X: 0, Y: 0},
-					0,
-					rl.White,
+			rl.DrawTexturePro(
+				monster.Sprite,
+				rl.NewRectangle(0, 0, 40, 35),
+				rl.NewRectangle(monster.Position.X, monster.Position.Y, 40, 35),
+				rl.Vector2{X: 0, Y: 0},
+				0,
+				rl.White,
 				)
 			}
-			if monster.Name == "bee guard" {
-				rl.DrawTexturePro(
-					monster.Sprite,
-					rl.NewRectangle(0, 0, 60, 70),
-					rl.NewRectangle(monster.Position.X, monster.Position.Y, 60, 70),
-					rl.Vector2{X: 0, Y: 0},
-					0,
-					rl.White,
-				)
-
-			}
-
+		if monster.Name == "bee guard" {
+			rl.DrawTexturePro(
+				monster.Sprite,
+				rl.NewRectangle(0, 0, 60, 70),
+				rl.NewRectangle(monster.Position.X, monster.Position.Y, 60, 70),
+				rl.Vector2{X: 0, Y: 0},
+				0,
+				rl.White,
+			)
 		}
 	}
 }

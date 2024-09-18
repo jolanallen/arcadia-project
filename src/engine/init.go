@@ -67,7 +67,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "bee guard",
-        Position: rl.Vector2{X: 900, Y: 290},
+        Position: rl.Vector2{X: 850, Y: 435},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
@@ -79,7 +79,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "Ralouf",
-        Position: rl.Vector2{X: 1150, Y: 435},
+        Position: rl.Vector2{X: 1000, Y: 435},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
@@ -88,17 +88,17 @@ func (e *Engine) InitEntities() {
         IsAlive: true,
         Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"),
     })
-    e.Monsters = append(e.Monsters, entity.Monster{
-        Name:     "snails",
-        Position: rl.Vector2{X: 350, Y: 250},
-        Health:   20,
-        Damage:   5,
-        Loot:     []item.Item{},
-        Worth:    12,
+   // e.Monsters = append(e.Monsters, entity.Monster{
+       // Name:     "snails",
+       // Position: rl.Vector2{X: 950, Y: 435},
+      //  Health:   20,
+       // Damage:   5,
+       // Loot:     []item.Item{},
+       // Worth:    12,
 
-        IsAlive: true,
-        Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png"),
-    })
+       // IsAlive: true,
+       // Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png"),
+   // })
 
 
     e.Player.Money = 1

@@ -127,7 +127,8 @@ func (e *Engine) CheckCollisions() {
 
 }
 func (e *Engine) ZoneCollisions() {
-	// Ajout des colisions sur les zone dite interdit de la map !!!
+	
+
 }
 
 func (e *Engine) MonsterCollisions() {
@@ -146,28 +147,13 @@ func (e *Engine) MonsterCollisions() {
 				}
 				
 			}
-		} else {
-			////.....
 		}
-
-	}
-
-	for _, Monster2 := range e.Monsters {
-		if Monster2.Position.X > e.Player.Position.X-50 &&
-			Monster2.Position.X < e.Player.Position.X+50 &&
-			Monster2.Position.Y > e.Player.Position.Y-50 &&
-			Monster2.Position.Y < e.Player.Position.Y+50 {
-
-			if Monster2.Name == "patate" {
-				e.NormalTalk(Monster2, "Press E for FIGHT!!")
-				if rl.IsKeyPressed(rl.KeyE) {
-					//lancer un combat en attendant juste dire combat refuse
-				}
-			}
-		} else {
-			///.....
+		if monster.Name == "Ralouf" {
+			e.NormalTalk(monster, "Press E for FIGHT!!")
+			if rl.IsKeyPressed(rl.KeyE) {
+				/// lancement combat
+			} 
 		}
-
 	}
 }
 
