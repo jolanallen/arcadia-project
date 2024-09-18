@@ -98,8 +98,12 @@ func (e *Engine) InGameLogic() {
 	}
 
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X +490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: 1980 / 2, Y: 1210 / 2 }                   // Bouger la
+	var ScreenWidth float32
+	var ScreenHeight float32
+	e.ScreenHeight = int32(ScreenHeight)
+	e.ScreenWidth = int32(ScreenWidth)
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X , Y: e.Player.Position.Y -270} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth , Y: ScreenHeight }                   // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {

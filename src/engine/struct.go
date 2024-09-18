@@ -30,6 +30,8 @@ type Engine struct {
 	BackgroundFrameCount int
 	QuitButton           entity.Button
 	StartButton          entity.Button
+	ScreenWidth          int32
+	ScreenHeight         int32
 
 	Player   entity.Player
 	Monsters []entity.Monster

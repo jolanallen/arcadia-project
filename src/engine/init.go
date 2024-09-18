@@ -15,9 +15,11 @@ type GameEngine struct {
 }
 
 func (e *Engine) Init() {
-   var X int32  = int32(rl.GetScreenWidth())
+   var X int32 = int32(rl.GetScreenWidth())
     var Y int32 = int32(rl.GetScreenHeight())
-    rl.InitWindow(Y, X, "Arcadia") // Initialisation des variables de l'engine
+    e.ScreenHeight = Y
+    e.ScreenWidth = X
+    rl.InitWindow(e.ScreenWidth, e.ScreenHeight, "Arcadia") // Initialisation des variables de l'engine
     e.IsRunning = true
     e.Sprites = make(map[string]rl.Texture2D)
 
@@ -33,11 +35,15 @@ func (e *Engine) Init() {
 }
 
 func (g *GameEngine) PrintScreenSize() {
+    g.ScreenHeight = int32(rl.GetScreenHeight())
+    g.ScreenWidth = int32(rl.GetScreenWidth())
     fmt.Println(g.ScreenWidth, "*", g.ScreenHeight)
 }
 
 // ---Init Window--- //
 func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
+    x = int32(rl.GetScreenWidth())
+    y = int32(rl.GetScreenHeight())
     g.ScreenWidth = x
     g.ScreenHeight = y
     g.Title = title
@@ -73,7 +79,7 @@ func (e *Engine) InitEntities() {
 
     e.Monsters = append(e.Monsters, entity.Monster{
         Name:     "Ralouf",
-        Position: rl.Vector2{X: 1150, Y: 290},
+        Position: rl.Vector2{X: 1150, Y: 435},
         Health:   20,
         Damage:   5,
         Loot:     []item.Item{},
