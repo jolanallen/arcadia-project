@@ -91,6 +91,7 @@ func (e *Engine) PauseRendering() {
 	rl.EndDrawing()
 }
 
+
 func (e *Engine) RenderPlayer() {
 
 	rl.DrawTexturePro(

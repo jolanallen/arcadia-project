@@ -122,6 +122,7 @@ func (e *Engine) InGameLogic() {
 
 func (e *Engine) CheckCollisions() {
 	e.MonsterCollisions()
+	e.ZoneCollisions()
 	
 
 }

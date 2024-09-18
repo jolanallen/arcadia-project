@@ -53,6 +53,11 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 }
 
 func (e *Engine) InitEntities() {
+    e.Collisions = append(e.Collisions, entity.Colision {
+        Name:        "rect0",
+        Position:     rl.Vector2{X: 112.5, Y: 369.5},
+       })
+
     e.Player = entity.Player{
         Position:  rl.Vector2{X: 130, Y: 410},
         Health:    100,
@@ -99,6 +104,7 @@ func (e *Engine) InitEntities() {
        // IsAlive: true,
        // Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png"),
    // })
+   
 
 
     e.Player.Money = 1
