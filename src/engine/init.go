@@ -117,7 +117,7 @@ func (e *Engine) InitCamera() {
 func (e *Engine) InitMusic() {
     rl.InitAudioDevice()
 
-    e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+    e.Music = rl.LoadMusicStream("sounds/music/alexander-nakarada-chase(chosic.com).mp3")
 
     rl.PlayMusicStream(e.Music)
 }

@@ -12,7 +12,7 @@ func (e *Engine) HomeLogic() {
 	//Musique
 
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/alexander-nakarada-chase(chosic.com).mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -118,6 +118,8 @@ func (e *Engine) InGameLogic() {
 
 
 	// Camera
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 	var ScreenWidth float32
 	var ScreenHeight float32
 	e.ScreenHeight = int32(ScreenHeight)
@@ -139,7 +141,7 @@ func (e *Engine) InGameLogic() {
 
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-07-Simon_s-In-There-Somewhere.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/alexander-nakarada-chase(chosic.com).mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
