@@ -121,23 +121,27 @@ func (e *Engine) InGameLogic() {
 }
 
 func (e *Engine) CheckCollisions() {
-
 	e.MonsterCollisions()
-	e.ZoneCollisions()
+	
 
 }
 func (e *Engine) ZoneCollisions() {
 	
+	
 
-}
+	
+	
+	
+
+}    
 
 func (e *Engine) MonsterCollisions() {
 
 	for _, monster := range e.Monsters {
 		if monster.Position.X > e.Player.Position.X-50 &&
-			monster.Position.X < e.Player.Position.X+50 &&
-			monster.Position.Y > e.Player.Position.Y-50 &&
-			monster.Position.Y < e.Player.Position.Y+50 {
+			monster.Position.X < e.Player.Position.X+150 &&
+			monster.Position.Y > e.Player.Position.Y-150 &&
+			monster.Position.Y < e.Player.Position.Y+150 {
 
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
