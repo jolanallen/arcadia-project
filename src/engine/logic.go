@@ -76,14 +76,9 @@ func (e *Engine) InGameLogic() {
 		e.Player.Position.Y += 4
 	}
 	
-	
-		//const poid float32 = 1
-		//var sol float32 = 410 // hauteur sol
-	
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
 			rl.GetTime()
-			//e.Player.Position.Y -=  50
 			if  rl.GetTime() < 1000 {
 				e.Player.Position.Y -=  100
 				e.Player.IsGround = false
@@ -121,6 +116,11 @@ func (e *Engine) InGameLogic() {
 	if e.Player.Position.Y >= 800 {
 		e.StateEngine = GAMEOVER
 	   }
+	if e.Player.Position.X <= 1000 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 410 {
+			e.Player.IsGround = true
+			e.StateEngine = GAMEOVER
+		}
+		
 
 	// Camera
 	var ScreenWidth float32
