@@ -21,9 +21,6 @@ const (
 	PAUSE     engine = iota
 	GAMEOVER  engine = iota
 	INVENTORY engine = iota
-	INGAME   engine = iota
-	PAUSE    engine = iota
-	GAMEOVER engine = iota
 	WIN      engine = iota
 	INFIGHT  engine = iota
 )
