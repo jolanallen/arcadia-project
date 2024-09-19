@@ -70,44 +70,64 @@ func (e *Engine) InGameLogic() {
 			e.Player.Position.X += e.Player.Speed
 		}
 	}
+	e.ZoneCollisions()
 		// Saut du personnage
-
-		const jump float32 = 12.0
-		const poid float32 = 1
-		const sol float32 = 410 // hauteur sol
+	if !e.Player.IsGround {
+		e.Player.Position.Y += 4
+	}
 	
-		if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
-			if !e.Player.Jumping {
-				e.Player.Jumping = true
-				e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
+	
+		//const poid float32 = 1
+		//var sol float32 = 410 // hauteur sol
+	
+	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
+		if e.Player.IsGround {
+			rl.GetTime()
+			//e.Player.Position.Y -=  50
+			if  rl.GetTime() < 1000 {
+				e.Player.Position.Y -=  100
+				e.Player.IsGround = false
 			}
+
 		}
+	}
 	
 		// gestion de la chute
-		if e.Player.Jumping {
-			e.Player.Position.Y += e.Player.Chute
-			e.Player.Chute += poid //  le poids pour faire redescendre le personnage
+		// if e.Player.Jumping {
+		// 	e.Player.Position.Y += e.Player.Chute
+		// 	e.Player.Chute += poid //  le poids pour faire redescendre le personnage
+		// 	if e.Player.Position.X <= 200 && e.Player.Position.X >= 90 {
+		// 		sol = 310
+		// 		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
+		// 			e.Player.Position.Y = sol //// Rester au sol
+		// 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
+		// 		}
+		// 	} else {
+		// 		sol = 410
+		// 		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
+		// 			e.Player.Position.Y = sol //// Rester au sol
+		// 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
+		// 		}
+		// 	}
+		// }
 	
-			if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
-				e.Player.Position.Y = sol //// Rester au sol
-				e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
-			}
-		}
-	
-
+		
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
 	} else {
 		e.Player.Speed = 1
 	}
+	if e.Player.Position.Y >= 800 {
+		e.StateEngine = GAMEOVER
+	   }
 
 	// Camera
 	var ScreenWidth float32
 	var ScreenHeight float32
 	e.ScreenHeight = int32(ScreenHeight)
 	e.ScreenWidth = int32(ScreenWidth)
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X , Y: e.Player.Position.Y -270} // Bouger la caméra
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X -400, Y: e.Player.Position.Y -270} // Bouger la caméra
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth , Y: ScreenHeight }                   // Bouger la
 
 	// Menus
@@ -127,16 +147,18 @@ func (e *Engine) InGameLogic() {
 
 func (e *Engine) CheckCollisions() {
 	e.MonsterCollisions()
-	e.ZoneCollisions()
-	
 
 }
 func (e *Engine) ZoneCollisions() {
-	
-	
-
-	
-	
+	e.Player.IsGround = false
+	for _, Colision := range e.ColisionListe {
+		if Colision.X > e.Player.Position.X-20 &&
+		Colision.X < e.Player.Position.X+20 &&
+		Colision.Y > e.Player.Position.Y-30 &&
+		Colision.Y < e.Player.Position.Y+30 {
+			e.Player.IsGround = true
+		}
+	}
 	
 
 }    
@@ -183,4 +205,11 @@ func (e *Engine) PauseLogic() {
 
 	//Musique
 	rl.UpdateMusicStream(e.Music)
+}
+func (e * Engine) GAMEOver() {
+	e.StateMenu = HOME
+	e.InitEntities()
+	
+	
+	
 }

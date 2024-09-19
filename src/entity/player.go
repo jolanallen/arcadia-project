@@ -13,7 +13,7 @@ type Player struct {
 	Money     int
 	Speed     float32
 	Inventory []item.Item
-	Jumping   bool
+	IsGround   bool
 	Chute     float32
 
 	IsAlive bool

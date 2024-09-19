@@ -13,11 +13,11 @@
             "expandedGroupLayers": [
                 2
             ],
-            "scale": 4,
+            "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 897.875,
-                "y": 376.75
+                "x": 771.6666666666666,
+                "y": 379.3333333333333
             }
         },
         "map.tmx#Background": {

@@ -28,7 +28,7 @@ func (e *Engine) Init() {
     e.InitCamera()
     e.InitMusic()
     e.InitMap("textures/map/tilesets/map.json")
-
+    
     e.SpriteLife = rl.LoadTexture("textures/entities/Life/barre_de_vie-removebg-preview.png")
     e.SpriteMoney = rl.LoadTexture("textures/entities/money/Screenshot_from_2024-09-16_12-05-39-removebg-preview.png")
     e.SpriteInventaire = rl.LoadTexture("textures/entities/inventaire/Screenshot_from_2024-09-16_12-20-00-removebg-preview(1).png")
@@ -54,7 +54,7 @@ func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
 
 func (e *Engine) InitEntities() {
     e.Player = entity.Player{
-        Position:  rl.Vector2{X: 130, Y: 410},
+        Position:  rl.Vector2{X: 130, Y: 210},
         Health:    100,
         Money:     0,
         Speed:     1,

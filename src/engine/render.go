@@ -79,6 +79,16 @@ func (e *Engine) InGameRendering() {
 		rl.NewVector2(0, 0),
 		0,
 		rl.White)
+
+	if e.Player.Position.Y >= 450 {
+		rl.DrawTexturePro(
+			e.GameOver, 
+			rl.NewRectangle(0, 0, 1280, 1280),
+			rl.NewRectangle(300, -50, 1500, 1500), 
+			rl.NewVector2(0, 0), 
+			0,
+			rl.White)
+	}
 }
 
 func (e *Engine) PauseRendering() {
