@@ -40,6 +40,12 @@ func (e *Engine) HomeLogic() {
 	}
 
 	//Menus
+
+	// if rl.IsMouseButtonDown(0) {
+	// 	e.StateMenu = PLAY
+	// 	e.StateEngine = LORE
+	// 	e.Timer = rl.GetTime()
+	// 	rl.StopMusicStream(e.Music)
 	
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		e.StateMenu = PLAY
@@ -47,6 +53,8 @@ func (e *Engine) HomeLogic() {
 		e.Timer = rl.GetTime()
 		rl.StopMusicStream(e.Music)
 
+	// }
+	if rl.IsKeyPressed(rl.KeyEscape) {
 	}
 	if rl.IsKeyPressed(rl.KeyQ) {
 		e.IsRunning = false
@@ -258,4 +266,7 @@ func (e *Engine) YouWin() {
 	e.InitEntities()
 }
 
+func (e *Engine) LoreLogic() {
+	
+}
 

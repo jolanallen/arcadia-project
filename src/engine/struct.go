@@ -68,4 +68,7 @@ type Engine struct {
 	StartedFight            rl.Texture2D
 
 	FondFight rl.Texture2D
+
+	FontMedieval rl.Font
+	FontFreshman rl.Font
 }
