@@ -38,3 +38,7 @@ func (p *Player) ToString() {
 func (p *Player) UpdateInventory() {
 
 }
+
+func (p *Player) UpdateMoney() {
+	
+}

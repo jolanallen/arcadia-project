@@ -29,6 +29,9 @@ func (engine *Engine) Run() {
 				engine.PauseRendering()
 				engine.PauseLogic()
 
+			case INVENTORY:
+				engine.InventoryRendering()
+				engine.InventoryLogic()
 			case GAMEOVER:
 				//...
 			}
