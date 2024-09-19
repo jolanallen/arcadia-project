@@ -52,9 +52,6 @@ func (e *Engine) HomeLogic() {
 		e.StateEngine = LORE
 		e.Timer = rl.GetTime()
 		rl.StopMusicStream(e.Music)
-
-	// }
-	if rl.IsKeyPressed(rl.KeyEscape) {
 	}
 	if rl.IsKeyPressed(rl.KeyQ) {
 		e.IsRunning = false
@@ -74,19 +71,9 @@ func (e *Engine) LoreLogic() {
 		e.StateEngine = INGAME
 		e.InitEntities()
 	}
-	if e.Timer+2 <= rl.GetTime() {
-		e.loreText = "Knight's quest \n\n\n"
-	}
-	if e.Timer+4 <= rl.GetTime() {
-		e.loreText += "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected. \n\n"
-	}
-	if e.Timer+6 <= rl.GetTime() {
-		e.loreText += "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? "
-	}
 	if e.Timer+10 <= rl.GetTime() {
 		e.StateEngine = INGAME
 	}
-	
 }
 
 func (e *Engine) InGameLogic() {
@@ -265,8 +252,3 @@ func (e *Engine) YouWin() {
 	e.StateEngine = INGAME
 	e.InitEntities()
 }
-
-func (e *Engine) LoreLogic() {
-	
-}
-
