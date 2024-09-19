@@ -159,14 +159,14 @@ func (e *Engine) RenderMonsters() {
 
 func (e *Engine) FightRendering() {
 	e.StartedFightCountFrames++
-
-	rl.DrawTexturePro(e.FondFight, rl.NewRectangle(0, 0, 640, 452), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
+	//rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawTexturePro(e.FondFight, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 500), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
 	rl.ClearBackground(rl.White)
 	if e.StartedFightCountFrames < 60 {
 		rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 450, 450), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	
-	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(1250, 570, 511, 511), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 70, 70), rl.NewRectangle(1250, 570, 300, 300), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawTexturePro(e.Player.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(100, 530, 311, 311), rl.NewVector2(0, 0), 0, rl.White)
 	
 }
