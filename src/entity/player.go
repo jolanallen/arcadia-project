@@ -15,7 +15,8 @@ type Player struct {
 	Inventory []item.Item
 	IsGround   bool
 	Chute     float32
-	Saut      float32
+	Psaut     float32
+	Saut      bool
 
 	IsAlive bool
 

@@ -89,7 +89,6 @@ func (e *Engine) InGameLogic() {
 	}
 	e.ZoneCollisions()
 	// Saut du personnage
-
 	if !e.Player.IsGround {
 		rl.WaitTime(0.001)
 		e.Player.Position.Y += 4
@@ -102,6 +101,24 @@ func (e *Engine) InGameLogic() {
 			e.Player.IsGround = false
 		}
 	}
+	// if !e.Player.IsGround {
+	// 	e.Player.Position.Y -= e.Player.Speed
+	// 	e.Player.Speed -= 5
+	// }
+
+	// if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
+	// 	if e.Player.IsGround {
+	// 		e.Player.Position.Y -= e.Player.Speed
+	// 		e.Player.Speed += 10
+	// 	}
+	// }
+	// if e.Player.Position.Y <= 110 {
+	// 	e.Player.Speed += 10
+	// 	fmt.Println(e.Player.Speed)
+
+	// } else {
+	// 	e.Player.IsGround = false
+	// }
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
