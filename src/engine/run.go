@@ -29,12 +29,23 @@ func (engine *Engine) Run() {
 				engine.PauseRendering()
 				engine.PauseLogic()
 
+			case INVENTORY:
+				engine.InventoryRendering()
+				engine.InventoryLogic()
 			case INFIGHT: 
 				engine.FightRendering()
 				engine.FightLogic() 
 
 			case GAMEOVER:
-				//...
+				engine.GAMEOver()
+
+			case WIN:
+				engine.YouWin()
+
+			case LORE:
+				engine.LoreRendering()
+				engine.LoreLogic()
+
 			}
 		}
 

@@ -9,15 +9,18 @@
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "map.tmx": {
             "expandedGroupLayers": [
                 2
             ],
-            "scale": 4,
+            "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 813.125,
-                "y": 311.25
+                "x": 771.6666666666666,
+                "y": 379.3333333333333
             }
         },
         "map.tmx#Background": {

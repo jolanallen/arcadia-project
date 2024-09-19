@@ -12,7 +12,7 @@ func (e *Engine) HomeLogic() {
 	//Musique
 
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-08-Egress.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/alexander-nakarada-chase(chosic.com).mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
@@ -20,7 +20,8 @@ func (e *Engine) HomeLogic() {
 		e.StartButton.IsHovered = true
 		if rl.IsMouseButtonDown(0) {
 			e.StateMenu = PLAY
-			e.StateEngine = INGAME
+			e.StateEngine = LORE
+			e.Timer = rl.GetTime()
 			rl.StopMusicStream(e.Music)
 		}
 	}
@@ -42,7 +43,8 @@ func (e *Engine) HomeLogic() {
 
 	if rl.IsMouseButtonDown(0) {
 		e.StateMenu = PLAY
-		e.StateEngine = INGAME
+		e.StateEngine = LORE
+		e.Timer = rl.GetTime()
 		rl.StopMusicStream(e.Music)
 
 	}
@@ -61,47 +63,71 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
-
-	// Mouvement
-	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
-		e.Player.Position.X -= e.Player.Speed
+	if e.Player.Position.X  >= 90  {
+		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
+			e.Player.Position.X -= e.Player.Speed
+		}
 	}
-	if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
-		e.Player.Position.X += e.Player.Speed
+	if e.Player.Position.X <= 1500 {
+		if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
+			e.Player.Position.X += e.Player.Speed
+		}
 	}
-	// Saut du personnage
-
-	const jump float32 = 12.0
-	const poid float32 = 1
-	const sol float32 = 410 // hauteur sol
-
+	e.ZoneCollisions()
+		// Saut du personnage
+	
+	if !e.Player.IsGround {
+		e.Player.Position.Y += 4
+	}
+	
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
-		if !e.Player.Jumping {
-			e.Player.Jumping = true
-			e.Player.Chute = -jump // saute avec une vitesse de -12 sur l'axe y
+		if e.Player.IsGround {
+			rl.GetTime()
+			e.Player.Position.Y -=  110
+		if  rl.GetTime() >= 6 {
+			e.Player.IsGround = false
+		}
+
 		}
 	}
-
-	// gestion de la chute
-	if e.Player.Jumping {
-		e.Player.Position.Y += e.Player.Chute
-		e.Player.Chute += poid //  le poids pour faire redescendre le personnage
-
-		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
-			e.Player.Position.Y = sol //// Rester au sol
-			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
-		}
-	}
+			
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
 	} else {
 		e.Player.Speed = 1
 	}
+	if e.Player.Position.Y >= 800 {
+		e.StateEngine = GAMEOVER
+	   }
+	if e.Player.Position.X <= 990 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 400 {
+			e.Player.IsGround = true
+			rl.WaitTime(3)
+			e.StateEngine = GAMEOVER
+		}
+	if e.Player.Position.X > 1450 {
+		rl.WaitTime(2)
+		e.StateEngine = WIN
+		
+		}
+		
+
+	// Inventory
+
+	if rl.IsKeyPressed(rl.KeyTab) {
+		e.StateEngine = INVENTORY
+	}
+
 
 	// Camera
+	var ScreenWidth float32
+	var ScreenHeight float32
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: 1980 / 2, Y: 1210 / 2}                                  // Bouger la
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
+	e.ScreenHeight = int32(ScreenHeight)
+	e.ScreenWidth = int32(ScreenWidth)
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X -400, Y: e.Player.Position.Y -270} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth , Y: ScreenHeight }                   // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
@@ -116,19 +142,33 @@ func (e *Engine) InGameLogic() {
 
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
-		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-07-Simon_s-In-There-Somewhere.mp3")
+		e.Music = rl.LoadMusicStream("sounds/music/alexander-nakarada-chase(chosic.com).mp3")
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
 }
 
-func (e *Engine) CheckCollisions() {
+func (e *Engine) InventoryLogic() {
+	if rl.IsKeyPressed(rl.KeyTab) {
+		e.StateEngine = INGAME
+	}
+}
 
+func (e *Engine) CheckCollisions() {
 	e.MonsterCollisions()
-	e.ZoneCollisions()
 
 }
 func (e *Engine) ZoneCollisions() {
+	e.Player.IsGround = false
+	for _, Colision := range e.ColisionListe {
+		if Colision.X > e.Player.Position.X-20 &&
+		Colision.X < e.Player.Position.X+20 &&
+		Colision.Y > e.Player.Position.Y-39 &&
+		Colision.Y < e.Player.Position.Y+39 {
+			e.Player.IsGround = true
+		}
+	}
+	
 	// Ajout des colisions sur les zone dite interdit de la map !!!
 }
 
@@ -140,9 +180,9 @@ func (e *Engine) MonsterCollisions() {
 
 	for _, monster := range e.Monsters {
 		if monster.Position.X > e.Player.Position.X-50 &&
-			monster.Position.X < e.Player.Position.X+50 &&
-			monster.Position.Y > e.Player.Position.Y-50 &&
-			monster.Position.Y < e.Player.Position.Y+50 {
+			monster.Position.X < e.Player.Position.X+150 &&
+			monster.Position.Y > e.Player.Position.Y-150 &&
+			monster.Position.Y < e.Player.Position.Y+150 {
 
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
@@ -173,10 +213,7 @@ func (e *Engine) MonsterCollisions() {
 					fmt.Println("Le combat commence !")
 				}
 			}
-		} else {
-			///.....
 		}
-
 	}
 }
 
@@ -196,4 +233,28 @@ func (e *Engine) PauseLogic() {
 
 	//Musique
 	rl.UpdateMusicStream(e.Music)
+}
+func (e * Engine) GAMEOver() {
+	e.StateMenu = HOME
+	e.InitEntities()
+	
+}
+func (e * Engine) YouWin() {
+	e.StateMenu = HOME
+	e.InitEntities()
+}
+
+func (e *Engine) LoreLogic() {
+	if e.Timer+2 <= rl.GetTime() {
+		e.loreText = "Knight's quest \n\n\n"
+	}
+	if e.Timer+4 <= rl.GetTime() {
+		e.loreText += "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected. \n\n"
+	} 
+	if e.Timer+6 <= rl.GetTime() {
+		e.loreText += "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? "
+	}
+	if e.Timer+10 <= rl.GetTime() {
+		e.StateEngine = INGAME
+	}
 }
