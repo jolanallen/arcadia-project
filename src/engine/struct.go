@@ -54,4 +54,6 @@ type Engine struct {
 	StartedFightCountFrames int
 	StartedFight rl.Texture2D
 
+	FondFight rl.Texture2D
+
 }

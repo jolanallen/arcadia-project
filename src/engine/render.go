@@ -153,13 +153,15 @@ func (e *Engine) RenderMonsters() {
 func (e *Engine) FightRendering() {
 	e.StartedFightCountFrames++
 
+	rl.DrawTexturePro(e.FondFight, rl.NewRectangle(0, 0, 640, 452), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
 	rl.ClearBackground(rl.White)
-	if e.StartedFightCountFrames < 100 {
-		rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 840, 452), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
+	if e.StartedFightCountFrames < 60 {
+		rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 450, 450), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
 	}
-
-	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(900, 530, 511, 511), rl.NewVector2(0, 0), 0, rl.White)
+	
+	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(1250, 570, 511, 511), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawTexturePro(e.Player.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(100, 530, 311, 311), rl.NewVector2(0, 0), 0, rl.White)
+	
 }
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
