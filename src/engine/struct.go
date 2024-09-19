@@ -17,12 +17,10 @@ const (
 type engine int
 
 const (
-	INGAME    engine = iota
-	PAUSE     engine = iota
-	GAMEOVER  engine = iota
-	INVENTORY engine = iota
-	WIN      engine = iota
-	INFIGHT  engine = iota
+	INGAME   engine = iota
+	PAUSE    engine = iota
+	GAMEOVER engine = iota
+	LORE engine = iota 
 )
 
 type Engine struct {

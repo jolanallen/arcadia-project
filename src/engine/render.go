@@ -43,6 +43,7 @@ func (e *Engine) HomeRendering() {
 	}
 	rl.DrawText("QUIT", 1620, 925, 60, rl.White)
 	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1700, 30, 25, rl.Red)
+
 }
 
 func (e *Engine) InGameRendering() {
@@ -183,4 +184,12 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 	)
 
 	rl.EndMode2D()
+}
+
+func (e *Engine) LoreRendering() {
+	rl.ClearBackground(rl.LightGray)
+
+	rl.DrawText(e.loreText, 50, int32(rl.GetScreenHeight())/170, 40, rl.RayWhite)
+
+	rl.EndDrawing()
 }

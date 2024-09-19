@@ -20,7 +20,8 @@ func (e *Engine) HomeLogic() {
 		e.StartButton.IsHovered = true
 		if rl.IsMouseButtonDown(0) {
 			e.StateMenu = PLAY
-			e.StateEngine = INGAME
+			e.StateEngine = LORE
+			e.Timer = rl.GetTime()
 			rl.StopMusicStream(e.Music)
 		}
 	}
@@ -42,7 +43,8 @@ func (e *Engine) HomeLogic() {
 
 	if rl.IsMouseButtonDown(0) {
 		e.StateMenu = PLAY
-		e.StateEngine = INGAME
+		e.StateEngine = LORE
+		e.Timer = rl.GetTime()
 		rl.StopMusicStream(e.Music)
 
 	}
