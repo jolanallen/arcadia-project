@@ -120,10 +120,10 @@ func (e *Engine) InGameLogic() {
 
 
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 	var ScreenWidth float32
 	var ScreenHeight float32
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 	e.ScreenHeight = int32(ScreenHeight)
 	e.ScreenWidth = int32(ScreenWidth)
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X -400, Y: e.Player.Position.Y -270} // Bouger la caméra
@@ -243,4 +243,19 @@ func (e * Engine) GAMEOver() {
 func (e * Engine) YouWin() {
 	e.StateMenu = HOME
 	e.InitEntities()
+}
+
+func (e *Engine) LoreLogic() {
+	if e.Timer+2 <= rl.GetTime() {
+		e.loreText = "Knight's quest \n\n\n"
+	}
+	if e.Timer+4 <= rl.GetTime() {
+		e.loreText += "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected. \n\n"
+	} 
+	if e.Timer+6 <= rl.GetTime() {
+		e.loreText += "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? "
+	}
+	if e.Timer+10 <= rl.GetTime() {
+		e.StateEngine = INGAME
+	}
 }

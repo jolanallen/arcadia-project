@@ -88,7 +88,7 @@ func (e *Engine) InGameRendering() {
 	}
 	if e.Player.Position.X >= 1450 {
 		rl.DrawTexturePro(
-			e.WIn, 
+			e.Win, 
 			rl.NewRectangle(0, 0, 300, 300),
 			rl.NewRectangle(120, 100, 1500, 1500), 
 			rl.NewVector2(0, 0), 
