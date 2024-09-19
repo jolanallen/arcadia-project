@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"main/src/entity"
 	"main/src/item"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 

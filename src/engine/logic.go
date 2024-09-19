@@ -61,6 +61,7 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
+
 	// Mouvement
 	if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 		e.Player.Position.X -= e.Player.Speed
@@ -108,7 +109,6 @@ func (e *Engine) InGameLogic() {
 	}
 
 	e.CheckCollisions()
-
 
 	if e.Player.Health < 1 {
 		e.StateEngine = INGAME
