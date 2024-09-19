@@ -41,6 +41,11 @@ func (engine *Engine) Run() {
 
 			case WIN:
 				engine.YouWin()
+
+			case LORE:
+				engine.LoreRendering()
+				engine.LoreLogic()
+
 			}
 		}
 
