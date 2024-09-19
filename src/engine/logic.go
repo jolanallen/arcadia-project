@@ -110,6 +110,13 @@ func (e *Engine) InGameLogic() {
 		}
 		
 
+	// Inventory
+
+	if rl.IsKeyPressed(rl.KeyTab) {
+		e.StateEngine = INVENTORY
+	}
+
+
 	// Camera
 	var ScreenWidth float32
 	var ScreenHeight float32
@@ -136,6 +143,12 @@ func (e *Engine) InGameLogic() {
 		rl.PlayMusicStream(e.Music)
 	}
 	rl.UpdateMusicStream(e.Music)
+}
+
+func (e *Engine) InventoryLogic() {
+	if rl.IsKeyPressed(rl.KeyTab) {
+		e.StateEngine = INGAME
+	}
 }
 
 func (e *Engine) CheckCollisions() {

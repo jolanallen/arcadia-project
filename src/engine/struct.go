@@ -17,6 +17,10 @@ const (
 type engine int
 
 const (
+	INGAME    engine = iota
+	PAUSE     engine = iota
+	GAMEOVER  engine = iota
+	INVENTORY engine = iota
 	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
@@ -34,6 +38,7 @@ type Engine struct {
 	StartButton          entity.Button
 	ScreenWidth          int32
 	ScreenHeight         int32
+	InventoryUI          rl.Texture2D
 	ColisionListe        []rl.Rectangle
 	GameOver             rl.Texture2D
 	WIn                  rl.Texture2D

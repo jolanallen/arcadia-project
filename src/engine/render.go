@@ -4,6 +4,7 @@ import (
 	// "crypto/x509"
 	"fmt"
 	"main/src/entity"
+	"strconv"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -55,6 +56,7 @@ func (e *Engine) InGameRendering() {
 	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
 	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(vrm, "Money:" + strconv.Itoa(e.Player.Money) + " /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold) // init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
 
@@ -66,13 +68,6 @@ func (e *Engine) InGameRendering() {
 		0,
 		rl.White)
 
-	rl.DrawTexturePro(
-		e.SpriteMoney,
-		rl.NewRectangle(20, 0, 487, 95),
-		rl.NewRectangle(0, 120, 487, 95),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
 	rl.DrawTexturePro(
 		e.SpriteInventaire,
 		rl.NewRectangle(100, 0, 510, 451),
@@ -109,6 +104,18 @@ func (e *Engine) PauseRendering() {
 	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
 
 	rl.EndDrawing()
+}
+
+func (e * Engine) InventoryRendering() {
+
+	rl.DrawTexturePro(
+		e.InventoryUI, 
+		rl.NewRectangle(2, 0, 564, 441),
+		rl.NewRectangle(650, 350, 566, 441),
+	    rl.NewVector2(0, 0),
+		0,
+		rl.White,
+	)
 }
 
 
