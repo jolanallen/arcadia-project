@@ -18,6 +18,8 @@ func (e *Engine) Load() {
 	e.Win = rl.LoadTexture("textures/img/WIn.png")
 	e.StartedFight = rl.LoadTexture("textures/img/StartedFight.png")
 	e.FondFight = rl.LoadTexture("textures/img/FondFight.jpg")
+	e.FontMedieval = rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
+	e.FontFreshman = rl.LoadFont("ressource/font/freshman/Freshman.ttf")
 }
 
 

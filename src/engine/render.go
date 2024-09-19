@@ -54,10 +54,9 @@ func (e *Engine) InGameRendering() {
 	e.RenderPlayer()
 
 	rl.EndMode2D() // On finit le rendu camera
-	vrm := rl.LoadFont("ressource/font/MedievalSharp/MedievalSharp-Regular.ttf")
 	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawTextEx(vrm, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White) // rajouter le tableau en faut faire une boucle le tableau est dans init.go
-	rl.DrawTextEx(vrm, "Money:" + strconv.Itoa(e.Player.Money) + " /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold) // init.go
+	rl.DrawTextEx(e.FontMedieval, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White)                              // rajouter le tableau en faut faire une boucle le tableau est dans init.go
+	rl.DrawTextEx(e.FontMedieval, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold) // init.go
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
 
@@ -79,19 +78,19 @@ func (e *Engine) InGameRendering() {
 
 	if e.Player.Position.Y >= 420 {
 		rl.DrawTexturePro(
-			e.GameOver, 
+			e.GameOver,
 			rl.NewRectangle(0, 0, 1280, 1280),
-			rl.NewRectangle(300, -50, 1500, 1500), 
-			rl.NewVector2(0, 0), 
+			rl.NewRectangle(300, -50, 1500, 1500),
+			rl.NewVector2(0, 0),
 			0,
 			rl.White)
 	}
 	if e.Player.Position.X >= 1450 {
 		rl.DrawTexturePro(
-			e.Win, 
+			e.Win,
 			rl.NewRectangle(0, 0, 300, 300),
-			rl.NewRectangle(120, 100, 1500, 1500), 
-			rl.NewVector2(0, 0), 
+			rl.NewRectangle(120, 100, 1500, 1500),
+			rl.NewVector2(0, 0),
 			0,
 			rl.White)
 	}
@@ -107,18 +106,17 @@ func (e *Engine) PauseRendering() {
 	rl.EndDrawing()
 }
 
-func (e * Engine) InventoryRendering() {
+func (e *Engine) InventoryRendering() {
 
 	rl.DrawTexturePro(
-		e.InventoryUI, 
+		e.InventoryUI,
 		rl.NewRectangle(2, 0, 564, 441),
 		rl.NewRectangle(650, 350, 566, 441),
-	    rl.NewVector2(0, 0),
+		rl.NewVector2(0, 0),
 		0,
 		rl.White,
 	)
 }
-
 
 func (e *Engine) RenderPlayer() {
 
@@ -143,8 +141,8 @@ func (e *Engine) RenderMonsters() {
 				rl.Vector2{X: 0, Y: 0},
 				0,
 				rl.White,
-				)
-			}
+			)
+		}
 		if monster.Name == "bee guard" {
 			rl.DrawTexturePro(
 				monster.Sprite,
@@ -166,10 +164,10 @@ func (e *Engine) FightRendering() {
 	if e.StartedFightCountFrames < 60 {
 		rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 450, 450), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
 	}
-	
+
 	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(1250, 570, 511, 511), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawTexturePro(e.Player.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(100, 530, 311, 311), rl.NewVector2(0, 0), 0, rl.White)
-	
+
 }
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
@@ -187,9 +185,26 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 }
 
 func (e *Engine) LoreRendering() {
-	rl.ClearBackground(rl.LightGray)
+	rl.ClearBackground(rl.Black)
 
-	rl.DrawText(e.loreText, 50, int32(rl.GetScreenHeight())/170, 40, rl.RayWhite)
+	if e.Timer+2 <= rl.GetTime() {
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+	}
+
+	if e.Timer+4 <= rl.GetTime() {
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected.", rl.NewVector2(50, 200), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
+	}
+	
+	if e.Timer+6 <= rl.GetTime() {
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected.", rl.NewVector2(50, 200), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? ", rl.NewVector2(50, 350), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
+	}
+	
+	if e.Timer+10 <= rl.GetTime() {
+		e.StateEngine = INGAME
+	}
 
 	rl.EndDrawing()
 }
