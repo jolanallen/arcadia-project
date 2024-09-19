@@ -81,10 +81,10 @@ func (e *Engine) InGameLogic() {
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
 			rl.GetTime()
-			e.Player.Saut -=  110
-			if  rl.GetTime() >= 6 {
-				e.Player.IsGround = false
-			}
+			e.Player.Position.Y -=  110
+		if  rl.GetTime() >= 6 {
+			e.Player.IsGround = false
+		}
 
 		}
 	}
