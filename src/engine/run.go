@@ -16,6 +16,8 @@ func (engine *Engine) Run() {
 			engine.HomeRendering()
 			engine.HomeLogic()
 
+		
+
 		case SETTINGS:
 			engine.SettingsLogic()
 
@@ -41,14 +43,12 @@ func (engine *Engine) Run() {
 
 			case WIN:
 				engine.YouWin()
-
+				
 			case LORE:
 				engine.LoreRendering()
 				engine.LoreLogic()
-
 			}
 		}
-
 		rl.EndDrawing()
 	}
 }

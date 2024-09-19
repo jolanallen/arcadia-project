@@ -12,6 +12,7 @@ const (
 	HOME     menu = iota
 	SETTINGS menu = iota
 	PLAY     menu = iota
+	
 )
 
 type engine int
@@ -21,6 +22,7 @@ const (
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
 	LORE     engine = iota
+	
 	WIN      engine = iota
 	INFIGHT  engine = iota
 	INVENTORY engine = iota
