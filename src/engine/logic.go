@@ -72,6 +72,7 @@ func (e *Engine) InGameLogic() {
 	}
 	e.ZoneCollisions()
 		// Saut du personnage
+	
 	if !e.Player.IsGround {
 		e.Player.Position.Y += 4
 	}
@@ -79,34 +80,14 @@ func (e *Engine) InGameLogic() {
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
 			rl.GetTime()
-			if  rl.GetTime() < 1000 {
-				e.Player.Position.Y -=  100
+			e.Player.Saut -=  110
+			if  rl.GetTime() >= 6 {
 				e.Player.IsGround = false
 			}
 
 		}
 	}
-	
-		// gestion de la chute
-		// if e.Player.Jumping {
-		// 	e.Player.Position.Y += e.Player.Chute
-		// 	e.Player.Chute += poid //  le poids pour faire redescendre le personnage
-		// 	if e.Player.Position.X <= 200 && e.Player.Position.X >= 90 {
-		// 		sol = 310
-		// 		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
-		// 			e.Player.Position.Y = sol //// Rester au sol
-		// 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
-		// 		}
-		// 	} else {
-		// 		sol = 410
-		// 		if e.Player.Position.Y >= sol { //// si la postioon du personnage sur l'axe des y est supérieur ou égal a celle du sol
-		// 			e.Player.Position.Y = sol //// Rester au sol
-		// 			e.Player.Jumping = false  // permet que le personnage ne suate pas a l'infini
-		// 		}
-		// 	}
-		// }
-	
-		
+			
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
@@ -116,9 +97,15 @@ func (e *Engine) InGameLogic() {
 	if e.Player.Position.Y >= 800 {
 		e.StateEngine = GAMEOVER
 	   }
-	if e.Player.Position.X <= 1000 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 410 {
+	if e.Player.Position.X <= 990 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 400 {
 			e.Player.IsGround = true
+			rl.WaitTime(3)
 			e.StateEngine = GAMEOVER
+		}
+	if e.Player.Position.X > 1450 {
+		rl.WaitTime(2)
+		e.StateEngine = WIN
+		
 		}
 		
 
@@ -154,8 +141,8 @@ func (e *Engine) ZoneCollisions() {
 	for _, Colision := range e.ColisionListe {
 		if Colision.X > e.Player.Position.X-20 &&
 		Colision.X < e.Player.Position.X+20 &&
-		Colision.Y > e.Player.Position.Y-30 &&
-		Colision.Y < e.Player.Position.Y+30 {
+		Colision.Y > e.Player.Position.Y-39 &&
+		Colision.Y < e.Player.Position.Y+39 {
 			e.Player.IsGround = true
 		}
 	}
@@ -210,6 +197,8 @@ func (e * Engine) GAMEOver() {
 	e.StateMenu = HOME
 	e.InitEntities()
 	
-	
-	
+}
+func (e * Engine) YouWin() {
+	e.StateMenu = HOME
+	e.InitEntities()
 }

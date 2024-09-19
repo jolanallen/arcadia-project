@@ -31,6 +31,9 @@ func (engine *Engine) Run() {
 
 			case GAMEOVER:
 				engine.GAMEOver()
+
+			case WIN:
+				engine.YouWin()
 			}
 		}
 

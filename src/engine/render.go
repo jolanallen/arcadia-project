@@ -80,11 +80,20 @@ func (e *Engine) InGameRendering() {
 		0,
 		rl.White)
 
-	if e.Player.Position.Y >= 450 {
+	if e.Player.Position.Y >= 420 {
 		rl.DrawTexturePro(
 			e.GameOver, 
 			rl.NewRectangle(0, 0, 1280, 1280),
 			rl.NewRectangle(300, -50, 1500, 1500), 
+			rl.NewVector2(0, 0), 
+			0,
+			rl.White)
+	}
+	if e.Player.Position.X >= 1450 {
+		rl.DrawTexturePro(
+			e.WIn, 
+			rl.NewRectangle(0, 0, 300, 300),
+			rl.NewRectangle(120, 100, 1500, 1500), 
 			rl.NewVector2(0, 0), 
 			0,
 			rl.White)
@@ -106,7 +115,7 @@ func (e *Engine) RenderPlayer() {
 
 	rl.DrawTexturePro(
 		e.Player.Sprite,
-		rl.NewRectangle(0, 0, 100, 100),
+		rl.NewRectangle(0, 0, 100, 90),
 		rl.NewRectangle(e.Player.Position.X, e.Player.Position.Y, 90, 90),
 		rl.Vector2{X: 0, Y: 0},
 		0,
