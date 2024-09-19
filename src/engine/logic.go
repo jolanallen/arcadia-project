@@ -63,7 +63,7 @@ func (e *Engine) SettingsLogic() {
 }
 
 func (e *Engine) InGameLogic() {
-	if e.Player.Position.X  >= 90  {
+	if e.Player.Position.X >= 90 {
 		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 			e.Player.Position.X -= e.Player.Speed
 		}
@@ -74,23 +74,20 @@ func (e *Engine) InGameLogic() {
 		}
 	}
 	e.ZoneCollisions()
-		// Saut du personnage
-	
+	// Saut du personnage
+
 	if !e.Player.IsGround {
+		rl.WaitTime(0.001)
 		e.Player.Position.Y += 4
 	}
-	
+
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
-			rl.GetTime()
-			e.Player.Position.Y -=  110
-		if  rl.GetTime() >= 6 {
+			
+			e.Player.Position.Y -= 110
 			e.Player.IsGround = false
 		}
-
-		}
 	}
-			
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
@@ -99,25 +96,23 @@ func (e *Engine) InGameLogic() {
 	}
 	if e.Player.Position.Y >= 800 {
 		e.StateEngine = GAMEOVER
-	   }
+	}
 	if e.Player.Position.X <= 990 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 400 {
-			e.Player.IsGround = true
-			rl.WaitTime(3)
-			e.StateEngine = GAMEOVER
-		}
-	if e.Player.Position.X > 1450 {
+		e.Player.IsGround = true
+		rl.WaitTime(3)
+		e.StateEngine = GAMEOVER
+	}
+	if e.Player.Position.X >= 1456 {
 		rl.WaitTime(2)
 		e.StateEngine = WIN
-		
-		}
-		
+
+	}
 
 	// Inventory
 
 	if rl.IsKeyPressed(rl.KeyTab) {
 		e.StateEngine = INVENTORY
 	}
-
 
 	// Camera
 	var ScreenWidth float32
@@ -126,8 +121,8 @@ func (e *Engine) InGameLogic() {
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
 	e.ScreenHeight = int32(ScreenHeight)
 	e.ScreenWidth = int32(ScreenWidth)
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X -400, Y: e.Player.Position.Y -270} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: ScreenWidth , Y: ScreenHeight }                   // Bouger la
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X - 400, Y: e.Player.Position.Y - 270} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: ScreenWidth, Y: ScreenHeight}                            // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
@@ -135,7 +130,6 @@ func (e *Engine) InGameLogic() {
 	}
 
 	e.CheckCollisions()
-
 
 	if e.Player.Health < 1 {
 		e.StateEngine = INGAME
@@ -163,13 +157,13 @@ func (e *Engine) ZoneCollisions() {
 	e.Player.IsGround = false
 	for _, Colision := range e.ColisionListe {
 		if Colision.X > e.Player.Position.X-20 &&
-		Colision.X < e.Player.Position.X+20 &&
-		Colision.Y > e.Player.Position.Y-39 &&
-		Colision.Y < e.Player.Position.Y+39 {
+			Colision.X < e.Player.Position.X+20 &&
+			Colision.Y > e.Player.Position.Y-39 &&
+			Colision.Y < e.Player.Position.Y+39 {
 			e.Player.IsGround = true
 		}
 	}
-	
+
 	// Ajout des colisions sur les zone dite interdit de la map !!!
 }
 
@@ -235,12 +229,12 @@ func (e *Engine) PauseLogic() {
 	//Musique
 	rl.UpdateMusicStream(e.Music)
 }
-func (e * Engine) GAMEOver() {
+func (e *Engine) GAMEOver() {
 	e.StateMenu = HOME
 	e.InitEntities()
-	
+
 }
-func (e * Engine) YouWin() {
+func (e *Engine) YouWin() {
 	e.StateMenu = HOME
 	e.InitEntities()
 }
@@ -251,7 +245,7 @@ func (e *Engine) LoreLogic() {
 	}
 	if e.Timer+4 <= rl.GetTime() {
 		e.loreText += "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected. \n\n"
-	} 
+	}
 	if e.Timer+6 <= rl.GetTime() {
 		e.loreText += "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? "
 	}
