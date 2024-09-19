@@ -1,8 +1,9 @@
 package engine
 
 import (
-	"main/src/entity"
 	"fmt"
+	"main/src/entity"
+
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -98,8 +99,8 @@ func (e *Engine) InGameLogic() {
 	}
 
 	// Camera
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X +490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: 1980 / 2, Y: 1210 / 2 }                   // Bouger la
+	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
+	e.Camera.Offset = rl.Vector2{X: 1980 / 2, Y: 1210 / 2}                                  // Bouger la
 
 	// Menus
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
@@ -109,9 +110,8 @@ func (e *Engine) InGameLogic() {
 	e.CheckCollisions()
 
 
-	if rl.IsKeyPressed(rl.KeyE) {
-		e.StateEngine = INFIGHT
-		fmt.Println("FIGHT LA PUTAIN DE TA MERE")
+	if e.Player.Health < 1 {
+		e.StateEngine = INGAME
 	}
 
 	//Musique
@@ -133,7 +133,7 @@ func (e *Engine) ZoneCollisions() {
 }
 
 func (e *Engine) FightLogic() {
-	
+
 }
 
 func (e *Engine) MonsterCollisions() {
@@ -147,10 +147,11 @@ func (e *Engine) MonsterCollisions() {
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
-				} else {
-					///: ....
+					e.StateEngine = INFIGHT
+					e.Player.CurrentMonster = monster
+					fmt.Println("Le combat commence !")
 				}
-				
+
 			}
 		} else {
 			////.....
@@ -167,7 +168,9 @@ func (e *Engine) MonsterCollisions() {
 			if Monster2.Name == "patate" {
 				e.NormalTalk(Monster2, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
-					//lancer un combat en attendant juste dire combat refuse
+					e.StateEngine = INFIGHT
+					e.Player.CurrentMonster = Monster2
+					fmt.Println("Le combat commence !")
 				}
 			}
 		} else {

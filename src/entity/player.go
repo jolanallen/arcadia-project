@@ -19,6 +19,8 @@ type Player struct {
 	IsAlive bool
 
 	Sprite rl.Texture2D
+
+	CurrentMonster Monster
 }
 
 func (p *Player) Attack(m *Monster) {

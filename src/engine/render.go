@@ -1,6 +1,7 @@
 package engine
 
 import (
+	// "crypto/x509"
 	"fmt"
 	"main/src/entity"
 
@@ -150,9 +151,16 @@ func (e *Engine) RenderMonsters() {
 }
 
 func (e *Engine) FightRendering() {
-	rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 840, 452), rl.NewRectangle(0, 0, 840, 452), rl.NewVector2(0, 0), 0, rl.White)
-}
+	e.StartedFightCountFrames++
 
+	rl.ClearBackground(rl.White)
+	if e.StartedFightCountFrames < 100 {
+		rl.DrawTexturePro(e.StartedFight, rl.NewRectangle(0, 0, 840, 452), rl.NewRectangle(0, 0, 1590, 900), rl.NewVector2(0, 0), 0, rl.White)
+	}
+
+	rl.DrawTexturePro(e.Player.CurrentMonster.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(900, 530, 511, 511), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawTexturePro(e.Player.Sprite, rl.NewRectangle(0, 0, 100, 100), rl.NewRectangle(100, 530, 311, 311), rl.NewVector2(0, 0), 0, rl.White)
+}
 
 func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 	rl.BeginMode2D(e.Camera)
