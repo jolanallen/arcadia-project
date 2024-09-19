@@ -125,7 +125,16 @@ func (e *Engine) RenderMap() {
 					srcRectangle.X = float32(index % wantedTileSet.Columns)
 					srcRectangle.Y = float32(index / wantedTileSet.Columns)
 				}
-
+				if Layer.Name == "objet" {
+					e.ColisionListe = append(e.ColisionListe, rl.NewRectangle(destRectangle.X - 32, destRectangle.Y - 32, destRectangle.Width, destRectangle.Height))
+					// rl.DrawRectangle(
+					// 	destRectangle.ToInt32().X,
+					// 	destRectangle.ToInt32().Y,
+					// 	destRectangle.ToInt32().Width,
+					// 	destRectangle.ToInt32().Height,
+					// 	rl.Red,
+					// )
+				}
 				srcRectangle.X *= float32(e.MapJSON.TileWidth)
 				srcRectangle.Y *= float32(e.MapJSON.TileHeight)
 				rl.DrawTexturePro(

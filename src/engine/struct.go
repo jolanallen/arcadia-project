@@ -20,6 +20,7 @@ const (
 	INGAME   engine = iota
 	PAUSE    engine = iota
 	GAMEOVER engine = iota
+	WIN      engine = iota
 	INFIGHT  engine = iota
 )
 
@@ -33,6 +34,9 @@ type Engine struct {
 	StartButton          entity.Button
 	ScreenWidth          int32
 	ScreenHeight         int32
+	ColisionListe        []rl.Rectangle
+	GameOver             rl.Texture2D
+	WIn                  rl.Texture2D
 
 	Player   entity.Player
 	Monsters []entity.Monster

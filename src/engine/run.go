@@ -34,7 +34,10 @@ func (engine *Engine) Run() {
 				engine.FightLogic() 
 
 			case GAMEOVER:
-				//...
+				engine.GAMEOver()
+
+			case WIN:
+				engine.YouWin()
 			}
 		}
 
