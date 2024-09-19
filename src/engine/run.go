@@ -29,6 +29,10 @@ func (engine *Engine) Run() {
 				engine.PauseRendering()
 				engine.PauseLogic()
 
+			case INFIGHT: 
+				engine.FightRendering()
+				engine.FightLogic() 
+
 			case GAMEOVER:
 				//...
 			}

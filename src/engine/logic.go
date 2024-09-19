@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"fmt"
 	"main/src/entity"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -112,6 +113,11 @@ func (e *Engine) InGameLogic() {
 
 	e.CheckCollisions()
 
+
+	if e.Player.Health < 1 {
+		e.StateEngine = INGAME
+	}
+
 	//Musique
 	if !rl.IsMusicStreamPlaying(e.Music) {
 		e.Music = rl.LoadMusicStream("sounds/music/OSC-Ambient-Time-07-Simon_s-In-There-Somewhere.mp3")
@@ -130,6 +136,10 @@ func (e *Engine) ZoneCollisions() {
 	// Ajout des colisions sur les zone dite interdit de la map !!!
 }
 
+func (e *Engine) FightLogic() {
+
+}
+
 func (e *Engine) MonsterCollisions() {
 
 	for _, monster := range e.Monsters {
@@ -141,10 +151,11 @@ func (e *Engine) MonsterCollisions() {
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
-				} else {
-					///: ....
+					e.StateEngine = INFIGHT
+					e.Player.CurrentMonster = monster
+					fmt.Println("Le combat commence !")
 				}
-				
+
 			}
 		} else {
 			////.....
@@ -161,7 +172,9 @@ func (e *Engine) MonsterCollisions() {
 			if Monster2.Name == "patate" {
 				e.NormalTalk(Monster2, "Press E for FIGHT!!")
 				if rl.IsKeyPressed(rl.KeyE) {
-					//lancer un combat en attendant juste dire combat refuse
+					e.StateEngine = INFIGHT
+					e.Player.CurrentMonster = Monster2
+					fmt.Println("Le combat commence !")
 				}
 			}
 		} else {
