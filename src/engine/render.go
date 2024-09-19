@@ -26,7 +26,7 @@ func (e *Engine) HomeRendering() {
 		}
 	}
 
-	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, 1920, 1080), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, float32(rl.GetScreenWidth()), float32(rl.GetScreenHeight())), rl.NewVector2(0, 0), 0, rl.White)
 	rl.DrawTexturePro(e.Title, rl.NewRectangle(0, 0, 1472, 832), rl.NewRectangle(450, 300, 1000, 600), rl.NewVector2(0, 0), 0, rl.White)
 
 	if e.StartButton.IsHovered {

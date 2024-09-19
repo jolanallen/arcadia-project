@@ -23,6 +23,7 @@ const (
 	LORE     engine = iota
 	WIN      engine = iota
 	INFIGHT  engine = iota
+	INVENTORY engine = iota
 )
 
 type Engine struct {
