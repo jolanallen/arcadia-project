@@ -102,7 +102,7 @@ func (e *Engine) InitEntities() {
    
 
 
-    e.Player.Money = 1
+    e.Player.Money = 10
 }
 
 func (e *Engine) InitCamera() {
