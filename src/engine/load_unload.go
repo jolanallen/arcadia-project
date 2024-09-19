@@ -16,7 +16,6 @@ func (e *Engine) Load() {
 	e.InventoryUI = rl.LoadTexture("textures/entities/inventaire/Screenshot_from_2024-09-19_11-05-01-removebg-preview.png")
 	e.GameOver = rl.LoadTexture("textures/img/GameOver.png")
 	e.Win = rl.LoadTexture("textures/img/WIn.png")
-
 	e.StartedFight = rl.LoadTexture("textures/img/StartedFight.png")
 	e.FondFight = rl.LoadTexture("textures/img/FondFight.jpg")
 }
