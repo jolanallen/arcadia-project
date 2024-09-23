@@ -94,7 +94,7 @@ func (e *Engine) InGameLogic() {
 	}
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
-			e.Player.Psaut = -15
+			e.Player.Psaut = -18
 			e.Player.IsGround =false
 		}
 	}
