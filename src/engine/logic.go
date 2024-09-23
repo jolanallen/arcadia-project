@@ -86,28 +86,25 @@ func (e *Engine) InGameLogic() {
 	e.ZoneCollisions()
 
 
-	// Saut du personnage
-	if !e.Player.IsGround {
-		e.Player.Position.Y += e.Player.Chute
-		e.Player.Chute += 0.7
-		e.Player.IsGround = false
+	                                            // gravité appliquer au si le player n'est pas au sol
+	if !e.Player.IsGround {                    // si le personnage n'est pas au sol donc en l'air
+		e.Player.Position.Y += e.Player.Chute // on ajoute la valeur de la variable chute
+		e.Player.Chute += 0.7                // on ajoute a la variable chute +0.7 tanque que le joueur est en l'air
 	}
-	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
-		if e.Player.IsGround {
-			e.Player.Psaut = -18
-			e.Player.IsGround =false
+	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) { // si la touche espaces ou fleche du haut est pressé
+		if e.Player.IsGround {                                    // et si le joueur est au sol
+			e.Player.Psaut = -18                                 // on defini la variable Psaut "puissance saut" a -18 
 		}
 	}
-	
-	if e.Player.Psaut < 0 {
-		e.Player.Position.Y += e.Player.Psaut
-		e.Player.Psaut += 1
-	}
-
-	if e.Player.IsGround {
-		e.Player.Psaut = 0
-		e.Player.Chute = 0.5
-		e.Player.IsGround = true
+	// gestion du saut 
+	if e.Player.Psaut < 0 {                    // tant que psaut est inferieur a zero sachant que on démarre a -18
+		e.Player.Position.Y += e.Player.Psaut // on ajoute a la position du player en Y psaut
+		e.Player.Psaut += 1                //psaut est incrémenter de 1 a chaque fois 
+	}                                     // on a donc -18, -17 -16 -15 -14 -13 ..... etc 
+    // arrête du saut 
+	if e.Player.IsGround {              // si le player est au sol
+		e.Player.Psaut = 0             // au remet a zero la puissance du saut, cela evite d'avoir un saut de plus en  plus grand 
+		e.Player.Chute = 0.5          // on remet a 0.5 la force qui fait chuter le player cela evite qui tombe de plus en plus rapidement a chaque chute
 	}
 	
 
