@@ -43,7 +43,6 @@ type Engine struct {
 	ColisionListe        []rl.Rectangle
 	GameOver             rl.Texture2D
 	Win                  rl.Texture2D
-	loreText             string
 
 	Player   entity.Player
 	Monsters []entity.Monster
