@@ -94,13 +94,14 @@ func (e *Engine) InGameLogic() {
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) { // si la touche espaces ou fleche du haut est pressé
 		if e.Player.IsGround {                                    // et si le joueur est au sol
 			e.Player.Psaut = -18                                 // on defini la variable Psaut "puissance saut" a -18 
+			e.Player.IsGround = false                           // on défini le player comme n'étant plus au sol   
 		}
 	}
 	// gestion du saut 
 	if e.Player.Psaut < 0 {                    // tant que psaut est inferieur a zero sachant que on démarre a -18
 		e.Player.Position.Y += e.Player.Psaut // on ajoute a la position du player en Y psaut
-		e.Player.Psaut += 1                //psaut est incrémenter de 1 a chaque fois 
-	}                                     // on a donc -18, -17 -16 -15 -14 -13 ..... etc 
+		e.Player.Psaut += 1                  //psaut est incrémenter de 1 a chaque fois 
+	}                                       // on a donc -18, -17 -16 -15 -14 -13 ..... etc 
     // arrête du saut 
 	if e.Player.IsGround {              // si le player est au sol
 		e.Player.Psaut = 0             // au remet a zero la puissance du saut, cela evite d'avoir un saut de plus en  plus grand 
@@ -108,38 +109,38 @@ func (e *Engine) InGameLogic() {
 	}
 	
 
-	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
-		e.Player.Speed = 3
-	} else {
-		e.Player.Speed = 1
+	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // si la touche shift gauche ou shift droite est pressé
+		e.Player.Speed = 3                                               // alors la variable speed qui correspond a la vitesse du player est defini a 3
+	} else {                                                             // sinon 
+		e.Player.Speed = 1                                               // la variable speed reste a 1 
 	}
-	if e.Player.Position.Y >= 800 {
-		e.StateEngine = GAMEOVER
+
+
+	if e.Player.Position.Y >= 800 {                      // si la position du player sur l'axe des Y est supérieur ou égale a 800 
+		e.StateEngine = GAMEOVER                         // le statut du jeux passe a GAMEOVER 
 	}
-	if e.Player.Position.X <= 990 && e.Player.Position.X >= 840 && e.Player.Position.Y >= 400 {
-		e.Player.IsGround = true
-		rl.WaitTime(3)
-		e.StateEngine = GAMEOVER
+	if e.Player.Position.X <= 990 && // si la postion en x du player est comprise entre [840 ; 990] ET 
+	e.Player.Position.X >= 840 &&    
+	e.Player.Position.Y >= 400 {   // si la position en Y est superieurou egale a 400 
+		e.Player.IsGround = true      // le joueur est au sol
+		rl.WaitTime(3)                // on attend 3 sec
+		e.StateEngine = GAMEOVER     // et le statut du programme passe a gameover et execute donc la fonction liée a gameover 
 	}
-	if e.Player.Position.X >= 1456 {
+	if e.Player.Position.X >= 1456 {   // si la position du player en x est superieur ou égale  a 1456
 		rl.WaitTime(2)
-		e.StateEngine = WIN
+		e.StateEngine = WIN             // le statut du programe passe a WIN et execute donc le function liée a win 
 
 	}
 
 	// Inventory
 
-	if rl.IsKeyPressed(rl.KeyTab) {
-		e.StateEngine = INVENTORY
+	if rl.IsKeyPressed(rl.KeyTab) {   // si la touche TAB est pressée 
+		e.StateEngine = INVENTORY     // alors le statut du programme passe a INVENTORY se qui execute la fonction qui permet d'afficher l'inventaire 
 	}
 
 	// Camera
 	var ScreenWidth float32
 	var ScreenHeight float32
-	e.Camera.Target = rl.Vector2{X: e.Player.Position.X + 490, Y: e.Player.Position.Y + 20} // Bouger la caméra
-	e.Camera.Offset = rl.Vector2{X: ScreenWidth / 2, Y: ScreenHeight / 2}                   // Bouger la
-	e.ScreenHeight = int32(ScreenHeight)
-	e.ScreenWidth = int32(ScreenWidth)
 	e.Camera.Target = rl.Vector2{X: e.Player.Position.X - 400, Y: e.Player.Position.Y - 270} // Bouger la caméra
 	e.Camera.Offset = rl.Vector2{X: ScreenWidth, Y: ScreenHeight}                            // Bouger la
 
@@ -151,7 +152,7 @@ func (e *Engine) InGameLogic() {
 	e.CheckCollisions()
 
 	if e.Player.Health < 1 {
-		e.StateEngine = INGAME
+		e.StateEngine = GAMEOVER
 	}
 
 	//Musique
@@ -182,10 +183,7 @@ func (e *Engine) ZoneCollisions() {
 			e.Player.IsGround = true
 		}
 	}
-
-	// Ajout des colisions sur les zone dite interdit de la map !!!
 }
-
 func (e *Engine) FightLogic() {
 
 }
@@ -207,9 +205,8 @@ func (e *Engine) MonsterCollisions() {
 				}
 
 			}
-		} else {
-			////.....
-		}
+		} 
+		
 
 	}
 
