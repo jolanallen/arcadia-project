@@ -83,17 +83,12 @@ func (e *Engine) InGameLogic() {
 	}
 	e.ZoneCollisions()
 	// Saut du personnage
-
-	if !e.Player.IsGround {
-		rl.WaitTime(0.001)
-		e.Player.Position.Y += 4
-	}
-
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
-			
-			e.Player.Position.Y -= 110
-			e.Player.IsGround = false
+			rl.GetTime()
+			e.Player.Position.Y -= e.Player.Psaut
+			e.Player.Psaut += 11
+			fmt.Println(e.Timer)
 		}
 	}
 

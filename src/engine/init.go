@@ -59,6 +59,8 @@ func (e *Engine) InitEntities() {
 		Money:     0,
 		Speed:     1,
 		Inventory: []item.Item{},
+		Chute: 0.5,
+		Psaut: 0,
 
 		IsAlive: true,
 
