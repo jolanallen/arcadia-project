@@ -16,7 +16,7 @@ type Player struct {
 	IsGround   bool
 	Chute     float32
 	Psaut     float32
-	Saut      bool
+	Saut      float32
 
 	IsAlive bool
 

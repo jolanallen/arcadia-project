@@ -42,8 +42,8 @@ func (g *GameEngine) PrintScreenSize() {
 
 // ---Init Window--- //
 func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
-	x = int32(rl.GetScreenWidth())
-	y = int32(rl.GetScreenHeight())
+	x = int32(rl.GetScreenWidth()) // récupére la largeur de l'écran et la stock dans x
+	y = int32(rl.GetScreenHeight()) // récupére la hauteur de l'ecran et la stock dans y
 	g.ScreenWidth = x
 	g.ScreenHeight = y
 	g.Title = title
@@ -59,8 +59,9 @@ func (e *Engine) InitEntities() {
 		Money:     0,
 		Speed:     1,
 		Inventory: []item.Item{},
-		Chute: 0.5,
-		Psaut: 0,
+		Chute:      0.5,
+		Psaut:      0,
+		Saut:       0,
 
 		IsAlive: true,
 

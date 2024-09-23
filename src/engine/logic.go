@@ -71,26 +71,45 @@ func (e *Engine) LoreLogic() {
 }
 
 func (e *Engine) InGameLogic() {
+	// colisions a droit de la map sur l'axe des x 
 	if e.Player.Position.X >= 90 {
 		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
 			e.Player.Position.X -= e.Player.Speed
 		}
 	}
+	// collisons a gauche de la map sur l'axe des x
 	if e.Player.Position.X <= 1500 {
-		if rl.IsKeyDown(rl.KeyD) || rl.IsKeyDown(rl.KeyRight) {
+		if rl.IsKeyDown(rl.KeyE) || rl.IsKeyDown(rl.KeyRight) {
 			e.Player.Position.X += e.Player.Speed
 		}
 	}
 	e.ZoneCollisions()
+
+
 	// Saut du personnage
+	if !e.Player.IsGround {
+		e.Player.Position.Y += e.Player.Chute
+		e.Player.Chute += 0.7
+		e.Player.IsGround = false
+	}
 	if rl.IsKeyPressed(rl.KeySpace) || rl.IsKeyPressed(rl.KeyUp) {
 		if e.Player.IsGround {
-			rl.GetTime()
-			e.Player.Position.Y -= e.Player.Psaut
-			e.Player.Psaut += 11
-			fmt.Println(e.Timer)
+			e.Player.Psaut = -15
+			e.Player.IsGround =false
 		}
 	}
+	
+	if e.Player.Psaut < 0 {
+		e.Player.Position.Y += e.Player.Psaut
+		e.Player.Psaut += 1
+	}
+
+	if e.Player.IsGround {
+		e.Player.Psaut = 0
+		e.Player.Chute = 0.5
+		e.Player.IsGround = true
+	}
+	
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // sprint du perso
 		e.Player.Speed = 3
