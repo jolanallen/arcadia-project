@@ -95,6 +95,10 @@ func (e *Engine) InGameLogic() {
 			e.Player.Psaut = -18                                 // on defini la variable Psaut "puissance saut" a -18 
 			e.Player.IsGround = false                           // on défini le player comme n'étant plus au sol   
 		}
+			if e.BigJump {
+				e.Player.Psaut = -25
+				e.Player.IsGround = false                           // on défini le player comme n'étant plus au sol   
+			}
 	}
 	// gestion du saut 
 	if e.Player.Psaut < 0 {                    // tant que psaut est inferieur a zero sachant que on démarre a -18
@@ -108,7 +112,12 @@ func (e *Engine) InGameLogic() {
 	}
 	
 
-	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) { // si la touche shift gauche ou shift droite est pressé
+	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) {    // si la touche shift gauche ou shift droite est pressé
+		 if e.SupSpeed {
+			e.Player.Speed = 9
+		 } else {
+			e.Player.Speed = 3
+		 }
 		e.Player.Speed = 3                                               // alors la variable speed qui correspond a la vitesse du player est defini a 3
 	} else {                                                             // sinon 
 		e.Player.Speed = 1                                               // la variable speed reste a 1 

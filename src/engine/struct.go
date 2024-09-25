@@ -43,6 +43,8 @@ type Engine struct {
 	ColisionListe        []rl.Rectangle
 	GameOver             rl.Texture2D
 	Win                  rl.Texture2D
+	BigJump              bool
+	SupSpeed             bool
 
 	Player   entity.Player
 	Monsters []entity.Monster
