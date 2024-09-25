@@ -27,6 +27,7 @@ func main() {
 	} 
 	if *Speed {                      // si le contenu du pointeur Speed est a true donc  si l'utilisateur specifie l'argument -SPEED le flag bool est  a mit a true
 		e.SupSpeed = true
+		fmt.Println("ultraspeed :", *Speed)
 	}
 
 
