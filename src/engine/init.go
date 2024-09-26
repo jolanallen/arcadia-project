@@ -15,11 +15,11 @@ type GameEngine struct {
 }
 
 func (e *Engine) Init() {
-	var X int32 = int32(rl.GetScreenWidth())
-	var Y int32 = int32(rl.GetScreenHeight())
-	e.ScreenHeight = Y
+	var X int32 = int32(rl.GetScreenWidth())   // création d'une variable X pour stocker la largeur de l'écran
+	var Y int32 = int32(rl.GetScreenHeight())  // création d'une variabe Y pour stocker la longeur de l'écran
+	e.ScreenHeight = Y 
 	e.ScreenWidth = X
-	rl.InitWindow(1920, 1080, "Arcadia") // Initialisation des variables de l'engine
+	rl.InitWindow(X, Y, "Arcadia") // Initialisation des variables de l'engine
 	e.IsRunning = true
 	e.Sprites = make(map[string]rl.Texture2D)
 
@@ -28,7 +28,7 @@ func (e *Engine) Init() {
 	e.InitCamera()
 	e.InitMusic()
 	e.InitMap("textures/map/tilesets/map.json")
-
+	// chargement des texture du jeu 
 	e.SpriteLife = rl.LoadTexture("textures/entities/Life/barre_de_vie-removebg-preview.png")
 	e.SpriteMoney = rl.LoadTexture("textures/entities/money/Screenshot_from_2024-09-16_12-05-39-removebg-preview.png")
 	e.SpriteInventaire = rl.LoadTexture("textures/entities/inventaire/Screenshot_from_2024-09-16_12-20-00-removebg-preview(1).png")
@@ -37,22 +37,22 @@ func (e *Engine) Init() {
 func (g *GameEngine) PrintScreenSize() {
 	g.ScreenHeight = int32(rl.GetScreenHeight())
 	g.ScreenWidth = int32(rl.GetScreenWidth())
-	fmt.Println(g.ScreenWidth, "*", g.ScreenHeight)
+	fmt.Println(g.ScreenWidth, "*", g.ScreenHeight)  
 }
 
 // ---Init Window--- //
-func (g *GameEngine) InitGameEngine(x int32, y int32, title string) {
-	x = int32(rl.GetScreenWidth()) // récupére la largeur de l'écran et la stock dans x
-	y = int32(rl.GetScreenHeight()) // récupére la hauteur de l'ecran et la stock dans y
+func (g *GameEngine) InitGameEngine(title string) {
+	var x = int32(rl.GetScreenWidth()) // récupére la largeur de l'écran et la stock dans x
+	var y = int32(rl.GetScreenHeight()) // récupére la hauteur de l'ecran et la stock dans y
 	g.ScreenWidth = x
 	g.ScreenHeight = y
 	g.Title = title
 	rl.InitWindow(g.ScreenWidth, g.ScreenHeight, g.Title)
-	rl.SetTargetFPS(60)
+	rl.SetTargetFPS(60)              // initialisation des fps maximum du jeu 
 	rl.ToggleFullscreen()
 }
 
-func (e *Engine) InitEntities() {
+func (e *Engine) InitEntities() {            // initialisaion du personnage et des ennemis
 	e.Player = entity.Player{
 		Position:  rl.Vector2{X: 130, Y: 210},
 		Health:    100,
@@ -91,18 +91,6 @@ func (e *Engine) InitEntities() {
 		IsAlive: true,
 		Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"),
 	})
-	// e.Monsters = append(e.Monsters, entity.Monster{
-	// Name:     "snails",
-	// Position: rl.Vector2{X: 950, Y: 435},
-	//  Health:   20,
-	// Damage:   5,
-	// Loot:     []item.Item{},
-	// Worth:    12,
-
-	// IsAlive: true,
-	// Sprite:  rl.LoadTexture("textures/map/tilesets/Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png"),
-	// })
-
 	e.Player.Money = 1
 }
 
