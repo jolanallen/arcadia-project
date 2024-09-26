@@ -7,7 +7,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type Monster struct {
+type Monster struct {  // // definition des varaiable lie au boutton
+
 	Name     string
 	Position rl.Vector2
 	Health   int

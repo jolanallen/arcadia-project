@@ -7,7 +7,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type Player struct {
+type Player struct {     // definition des varaiable lie au boutton
+
 	Position  rl.Vector2
 	Health    int
 	Money     int
