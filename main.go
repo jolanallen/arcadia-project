@@ -30,14 +30,14 @@ func main() {
 		fmt.Println("ultraspeed :", *Speed)
 	}
 
-
-	e.Init()
-	e.Load()
+    // déroulement du lancement du jeu 
+	e.Init() // on execute le programme init qui permet d'initialiser le jeu
+	e.Load() // on charge tout les élément et les texture necsssaire au bon fonctionnement du jeu 
 	go func() {
 		log.Println(http.ListenAndServe("localhost:6060", nil))
 	}()
-	e.Run()
-	e.Unload()
-	e.Close()
+	e.Run()    // on execute le programme run qui est le programme qui fait tourner le jeu en utilisant les différent état de jeu 
+	e.Unload() // on décharge les texture et les élément 
+	e.Close() // on ferme le jeu 
 
 }
