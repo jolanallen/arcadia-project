@@ -40,18 +40,18 @@ func (e *Engine) HomeLogic() {
 
 	//Menus
 
-	if rl.IsKeyPressed(rl.KeyEnter) {
-		e.StateMenu = PLAY
-		e.StateEngine = LORE
-		e.Timer = rl.GetTime()
-		rl.StopMusicStream(e.Music)
+	if rl.IsKeyPressed(rl.KeyEnter) { // si la touche entrer est pressé
+		e.StateMenu = PLAY           // le statut du menu pas en mode PLAY
+		e.StateEngine = LORE        // on passe ensuite le statut du jeu en mode lore (histoire du jeu)
+		e.Timer = rl.GetTime()      // on lance le timer et on stock dans e.Timer
+		rl.StopMusicStream(e.Music)   // on coupe la music 
 	}
-	if rl.IsKeyPressed(rl.KeyQ) {
-		e.IsRunning = false
+	if rl.IsKeyPressed(rl.KeyQ) {         // si la touche Q est présser 
+		e.IsRunning = false              // le jeu s'arrête permet de quitter le jeu 
 	}
 }
 
-func (e *Engine) SettingsLogic() {
+func (e *Engine) SettingsLogic() {  
 	//Menus
 	if rl.IsKeyPressed(rl.KeyB) {
 		e.StateMenu = HOME
@@ -59,17 +59,17 @@ func (e *Engine) SettingsLogic() {
 	//Musique
 	rl.UpdateMusicStream(e.Music)
 }
-func (e *Engine) LoreLogic() {
+func (e *Engine) LoreLogic() {             // fonction qui gére la logic d'execution du lore
 	if rl.IsKeyPressed(rl.KeyP) {
 		e.StateEngine = INGAME
 		e.InitEntities()
 	}
-	if e.Timer+10 <= rl.GetTime() {
-		e.StateEngine = INGAME
+	if e.Timer+10 <= rl.GetTime() {      // permet de définir la durée aprés la quelle le lore se ferme et le jeu se lance 
+		e.StateEngine = INGAME          
 	}
 }
 
-func (e *Engine) InGameLogic() {
+func (e *Engine) InGameLogic() {   // fonction qui permet la gestion de la logique dans le jeux 
 	// colisions a droit de la map sur l'axe des x 
 	if e.Player.Position.X >= 90 {
 		if rl.IsKeyDown(rl.KeyA) || rl.IsKeyDown(rl.KeyLeft) {
@@ -206,6 +206,7 @@ func (e *Engine) MonsterCollisions() {
 
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
+				//e.RobotTalk(monster, "bonjour grrrrrr")
 				if rl.IsKeyPressed(rl.KeyE) {
 					e.StateEngine = INFIGHT
 					e.Player.CurrentMonster = monster
