@@ -12,87 +12,75 @@ import (
 func (e *Engine) Rendering() {
 	rl.ClearBackground(rl.Blue)
 }
-
 func (e *Engine) HomeRendering() {
-	rl.ClearBackground(rl.DarkGreen)
-	e.BackgroundFrameCount++
-	fmt.Println(e.BackgroundFrameCount)
+	rl.ClearBackground(rl.DarkGreen) // Définit la couleur de fond pour l'écran d'accueil.
+	e.BackgroundFrameCount++          // Incrémente le compteur d'images de fond.
 
+	fmt.Println(e.BackgroundFrameCount) // Affiche la valeur actuelle de BackgroundFrameCount (probablement utilisé pour des tests).
+
+	// Change l'arrière-plan toutes les 6 frames.
 	if e.BackgroundFrameCount%6 == 1 {
 		if e.BgSourceX == 9000 {
-			e.BgSourceX = 0
+			e.BgSourceX = 0 // Remet à zéro si le fond atteint un certain point.
 		} else {
-			e.BgSourceX += 600
+			e.BgSourceX += 600 // Déplace le fond vers la droite.
 		}
 	}
 
+	// Affiche l'image d'arrière-plan avec un scrolling.
 	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, float32(rl.GetScreenWidth()), float32(rl.GetScreenHeight())), rl.NewVector2(0, 0), 0, rl.White)
+
+	// Affiche le titre du jeu à l'écran.
 	rl.DrawTexturePro(e.Title, rl.NewRectangle(0, 0, 1472, 832), rl.NewRectangle(450, 300, 1000, 600), rl.NewVector2(0, 0), 0, rl.White)
 
+	// Vérifie si le bouton "Start" est survolé, et affiche l'état correspondant.
 	if e.StartButton.IsHovered {
 		rl.DrawTexturePro(e.StartButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	} else {
 		rl.DrawTexturePro(e.StartButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 700, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
+
+	// Affiche le texte "PLAY" pour le bouton de démarrage.
 	rl.DrawText("PLAY", 1620, 775, 60, rl.White)
 
+	// Vérifie si le bouton "Quit" est survolé, et affiche l'état correspondant.
 	if e.QuitButton.IsHovered {
 		rl.DrawTexturePro(e.QuitButton.HoverTexture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	} else {
 		rl.DrawTexturePro(e.QuitButton.Texture, rl.NewRectangle(0, 0, 128, 90), rl.NewRectangle(1550, 850, 300, 200), rl.NewVector2(0, 0), 0, rl.White)
 	}
+
+	// Affiche le texte "QUIT" pour le bouton de sortie.
 	rl.DrawText("QUIT", 1620, 925, 60, rl.White)
+
+	// Affiche le nombre d'images par seconde (FPS).
 	rl.DrawText(fmt.Sprint("FPS:", int32(rl.GetFPS())), 1700, 30, 25, rl.Red)
-
 }
-
 func (e *Engine) InGameRendering() {
-	rl.ClearBackground(rl.Gray)
-	rl.BeginMode2D(e.Camera) // On commence le rendu camera
-	e.RenderMap()
-	e.RenderMonsters()
-	e.RenderPlayer()
+	rl.ClearBackground(rl.Gray)         // Efface l'arrière-plan avec une couleur grise.
+	rl.BeginMode2D(e.Camera)            // Démarre le rendu de la caméra pour centrer la scène autour du personnage.
+	e.RenderMap()                       // Rendu de la carte.
+	e.RenderMonsters()                  // Rendu des monstres présents sur la carte.
+	e.RenderPlayer()                    // Rendu du personnage joueur.
 
-	rl.EndMode2D() // On finit le rendu camera
-	// Ecriture fixe (car pas affectée par le mode camera)
-	rl.DrawTextEx(e.FontMedieval, "Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White)                              // rajouter le tableau en faut faire une boucle le tableau est dans init.go
-	rl.DrawTextEx(e.FontMedieval, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold) // init.go
+	rl.EndMode2D()                      // Fin du rendu de la caméra.
+	
+	// Affiche des informations supplémentaires qui ne sont pas affectées par la caméra.
+	rl.DrawTextEx(e.FontMedieval, "press tab Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White)
+	rl.DrawTextEx(e.FontMedieval, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold)
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
 	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
 
-	rl.DrawTexturePro(
-		e.SpriteLife,
-		rl.NewRectangle(0, 0, 435, 100),
-		rl.NewRectangle(0, 0, 435, 100),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
+	// Rendu des éléments comme les barres de vie, inventaire, etc.
+	rl.DrawTexturePro(e.SpriteLife, rl.NewRectangle(0, 0, 435, 100), rl.NewRectangle(0, 0, 435, 100), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawTexturePro(e.SpriteInventaire, rl.NewRectangle(100, 0, 510, 451), rl.NewRectangle(50, 800, 130, 100), rl.NewVector2(0, 0), 0, rl.White)
 
-	rl.DrawTexturePro(
-		e.SpriteInventaire,
-		rl.NewRectangle(100, 0, 510, 451),
-		rl.NewRectangle(50, 800, 130, 100),
-		rl.NewVector2(0, 0),
-		0,
-		rl.White)
-
+	// Vérifie la position du joueur et affiche "Game Over" ou "Win" selon certaines conditions.
 	if e.Player.Position.Y >= 420 {
-		rl.DrawTexturePro(
-			e.GameOver,
-			rl.NewRectangle(0, 0, 1280, 1280),
-			rl.NewRectangle(300, -50, 1500, 1500),
-			rl.NewVector2(0, 0),
-			0,
-			rl.White)
+		rl.DrawTexturePro(e.GameOver, rl.NewRectangle(0, 0, 1280, 1280), rl.NewRectangle(300, -50, 1500, 1500), rl.NewVector2(0, 0), 0, rl.White)
 	}
 	if e.Player.Position.X >= 1450 {
-		rl.DrawTexturePro(
-			e.Win,
-			rl.NewRectangle(0, 0, 300, 300),
-			rl.NewRectangle(120, 100, 1500, 1500),
-			rl.NewVector2(0, 0),
-			0,
-			rl.White)
+		rl.DrawTexturePro(e.Win, rl.NewRectangle(0, 0, 300, 300), rl.NewRectangle(120, 100, 1500, 1500), rl.NewVector2(0, 0), 0, rl.White)
 	}
 }
 
@@ -183,21 +171,6 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 
 	rl.EndMode2D()
 }
-// func (e *Engine) RenderTalk(m entity.Monster, rep string) {
-// 	rl.BeginMode2D(e.Camera)
-// 	fmt.Println(rep)
-// 	rl.DrawText(
-// 		rep,
-// 		int32(m.Position.X),
-// 		int32(m.Position.Y)+100,
-// 		10,
-// 		rl.RayWhite,
-// 	)
-	
-
-// 	rl.EndMode2D()
-// }
-
 
 func (e *Engine) LoreRendering() {
 	rl.ClearBackground(rl.Black)

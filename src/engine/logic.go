@@ -207,7 +207,6 @@ func (e *Engine) MonsterCollisions() {
 
 			if monster.Name == "bee guard" {
 				e.NormalTalk(monster, "Press E for FIGHT!!")
-				//e.RobotTalk(monster, "bonjour grrrrrr")
 				if rl.IsKeyPressed(rl.KeyE) {
 					e.StateEngine = INFIGHT
 					e.Player.CurrentMonster = monster
@@ -241,9 +240,6 @@ func (e *Engine) MonsterCollisions() {
 func (e *Engine) NormalTalk(m entity.Monster, sentence string) {
 	e.RenderDialog(m, sentence)
 }
-// func (e *Engine) RobotTalk(m entity.Monster, sentence string) {
-	
-// }
 
 func (e *Engine) PauseLogic() {
 	//Menus
