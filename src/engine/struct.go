@@ -45,6 +45,8 @@ type Engine struct {
 	Win                  rl.Texture2D
 	BigJump              bool
 	SupSpeed             bool
+	Robotsentence       []string
+	
 
 	Player   entity.Player
 	Monsters []entity.Monster

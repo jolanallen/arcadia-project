@@ -1,6 +1,7 @@
 package engine
 
 import (
+	
 	"main/src/entity"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -240,6 +241,9 @@ func (e *Engine) MonsterCollisions() {
 func (e *Engine) NormalTalk(m entity.Monster, sentence string) {
 	e.RenderDialog(m, sentence)
 }
+// func (e *Engine) RobotTalk(m entity.Monster, sentence string) {
+	
+// }
 
 func (e *Engine) PauseLogic() {
 	//Menus
