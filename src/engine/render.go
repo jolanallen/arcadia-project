@@ -183,6 +183,21 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 
 	rl.EndMode2D()
 }
+// func (e *Engine) RenderTalk(m entity.Monster, rep string) {
+// 	rl.BeginMode2D(e.Camera)
+// 	fmt.Println(rep)
+// 	rl.DrawText(
+// 		rep,
+// 		int32(m.Position.X),
+// 		int32(m.Position.Y)+100,
+// 		10,
+// 		rl.RayWhite,
+// 	)
+	
+
+// 	rl.EndMode2D()
+// }
+
 
 func (e *Engine) LoreRendering() {
 	rl.ClearBackground(rl.Black)

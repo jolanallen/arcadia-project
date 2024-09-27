@@ -15,6 +15,7 @@ type Monster struct {  // // definition des varaiable lie au boutton
 	Damage   int
 	Loot     []item.Item
 	Worth    int //valeur en argent quand tué
+	
 
 	IsAlive bool
 
