@@ -1,3 +1,6 @@
+
+
+
 <<<<<<< HEAD
 
 Bonjour,
@@ -18,7 +21,7 @@ Via le terminal :
 
     Une fois Wine installé, vous pouvez lancer le jeu. Pour cela, dans le terminal, accédez au répertoire où vous avez extrait le fichier ZIP.
 
-    Une fois dans le répertoire, exécutez la commande suivante : wine Arcadia.
+    Une fois dans le répertoire, exécutez la commande suivante : wine arcadia ou wine arcadia -h pour voir les options
 
     Le jeu se lancera. Pour quitter le jeu, appuyez sur "Quit" dans le menu ou sur la touche "Q" lorsque le jeu est en pause. Une fois la fenêtre fermée, n'oubliez pas de faire un Ctrl + C dans le terminal pour arrêter complètement le jeu.
 
@@ -46,7 +49,7 @@ Via the terminal:
 
     Once Wine is installed, you can launch the game. To do this, in the terminal, navigate to the directory where you extracted the ZIP file.
 
-    Once in the directory, run the following command: wine Arcadia.
+    Once in the directory, run the following command: wine arcadia or wine arcadia -h for show options
 
     The game will launch. To quit the game, press "Quit" in the menu or press the "Q" key when the game is paused. Once the window is closed, don't forget to do a Ctrl + C in the terminal to fully stop the game.
 
@@ -54,3 +57,6 @@ Via the graphical interface:
 
     Go to the directory where you extracted the ZIP file and double-click on the "Arcadia" executable.
 
+
+thank !!!
+have a good days !!
