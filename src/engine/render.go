@@ -66,10 +66,10 @@ func (e *Engine) InGameRendering() {
 	rl.EndMode2D()                      // Fin du rendu de la caméra.
 	
 	// Affiche des informations supplémentaires qui ne sont pas affectées par la caméra.
-	rl.DrawTextEx(e.FontMedieval, "press tab Inventory", rl.Vector2{X: 1500, Y: 1000}, 40, 2, rl.White)
+	rl.DrawTextEx(e.FontMedieval, "press tab for show Inventory", rl.Vector2{X: 820, Y: 10}, 30, 2, rl.White)
 	rl.DrawTextEx(e.FontMedieval, "Money:"+strconv.Itoa(e.Player.Money)+" /100", rl.Vector2{X: 5, Y: 100}, 40, 2, rl.Gold)
 	rl.DrawText("Press [P] to Pause", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] to Pause", 20)/2, int32(rl.GetScreenHeight())/2-490, 20, rl.RayWhite)
-	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.DarkGreen)
+	rl.DrawText(fmt.Sprint("fps:", int32(rl.GetFPS())), 1700, 30, 40, rl.Red)
 
 	// Rendu des éléments comme les barres de vie, inventaire, etc.
 	rl.DrawTexturePro(e.SpriteLife, rl.NewRectangle(0, 0, 435, 100), rl.NewRectangle(0, 0, 435, 100), rl.NewVector2(0, 0), 0, rl.White)
@@ -85,11 +85,10 @@ func (e *Engine) InGameRendering() {
 }
 
 func (e *Engine) PauseRendering() {
-	rl.ClearBackground(rl.LightGray)
-
-	rl.DrawText("PAUSE", int32(rl.GetScreenWidth())/2-rl.MeasureText("PAUSE", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.RayWhite)
-	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.RayWhite)
-	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.RayWhite)
+	rl.DrawTexturePro(e.Background, rl.NewRectangle(float32(e.BgSourceX), float32(e.BgSourceY), 600, 338), rl.NewRectangle(0, 0, float32(rl.GetScreenWidth()), float32(rl.GetScreenHeight())), rl.NewVector2(0, 0), 0, rl.White)
+	rl.DrawText("PAUSE", int32(rl.GetScreenWidth())/2-rl.MeasureText("PAUSE", 40)/2, int32(rl.GetScreenHeight())/2-150, 40, rl.White)
+	rl.DrawText("[P] or [Esc] to resume", int32(rl.GetScreenWidth())/2-rl.MeasureText("[P] or [Esc] to resume", 20)/2, int32(rl.GetScreenHeight())/2, 20, rl.White)
+	rl.DrawText("[Q]/[A] to Quit", int32(rl.GetScreenWidth())/2-rl.MeasureText("[Esc] to Quit", 20)/2, int32(rl.GetScreenHeight())/2+100, 20, rl.White)
 
 	rl.EndDrawing()
 }
@@ -174,18 +173,19 @@ func (e *Engine) RenderDialog(m entity.Monster, sentence string) {
 
 func (e *Engine) LoreRendering() {
 	rl.ClearBackground(rl.Black)
+	rl.DrawText("Press [P] for Pass", int32(rl.GetScreenWidth())/2-rl.MeasureText("Press [P] for Pass", 20)/2, int32(rl.GetScreenHeight())/2-550, 15, rl.RayWhite)
 
 	if e.Timer+2 <= rl.GetTime() {
-		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(650, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
 	}
 
 	if e.Timer+4 <= rl.GetTime() {
-		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(650, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
 		rl.DrawTextPro(e.FontFreshman, "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected.", rl.NewVector2(50, 200), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
 	}
 	
 	if e.Timer+6 <= rl.GetTime() {
-		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(750, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
+		rl.DrawTextPro(e.FontFreshman, "Knight's Quest", rl.NewVector2(650, 100), rl.NewVector2(0, 0), 0, 60, 10, rl.DarkGreen)
 		rl.DrawTextPro(e.FontFreshman, "In the village of Oakwood, a legendary Oakwood Acorn has gone missing. \n Dark forces in the nearby forest are suspected.", rl.NewVector2(50, 200), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
 		rl.DrawTextPro(e.FontFreshman, "track down the thieves, defeat the porc cerfs and bee swarms guarding the forest,\n and reclaim the treasured artifact. \n Brave knights have protected Oakwood for generations. \n Now, it's your turn. Explore ancient ruins, hidden clearings, \n and treacherous paths. The fate of Oakwood hangs in the balance. \n Will you emerge victorious and restore peace to the village? ", rl.NewVector2(50, 350), rl.NewVector2(0, 0), 0, 30, 5, rl.DarkGreen)
 	}

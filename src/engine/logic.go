@@ -197,39 +197,52 @@ func (e *Engine) FightLogic() {
 
 }
 
+// Gère les collisions avec les monstres dans le jeu.
 func (e *Engine) MonsterCollisions() {
-
+	// Parcourt tous les monstres présents dans le jeu.
 	for _, monster := range e.Monsters {
+		// Vérifie si la position du monstre est à proximité de celle du joueur (dans un rayon donné).
 		if monster.Position.X > e.Player.Position.X-50 &&
 			monster.Position.X < e.Player.Position.X+150 &&
 			monster.Position.Y > e.Player.Position.Y-150 &&
 			monster.Position.Y < e.Player.Position.Y+150 {
 
+			// Si le monstre est nommé "bee guard".
 			if monster.Name == "bee guard" {
+				// Affiche un message indiquant que le joueur peut combattre.
 				e.NormalTalk(monster, "Press E for FIGHT!!")
+				// Vérifie si la touche E a été pressée.
 				if rl.IsKeyPressed(rl.KeyE) {
+					// Change l'état du moteur de jeu pour indiquer que le joueur est en combat.
 					e.StateEngine = INFIGHT
+					// Définit le monstre actuel du joueur.
 					e.Player.CurrentMonster = monster
+					// Affiche un message indiquant que le combat commence.
 					e.NormalTalk(monster, "le combat commence!!")
 				}
-
 			}
 		} 
-		
-
 	}
 
+	// Vérifie une autre condition de collision avec les monstres.
 	for _, Monster2 := range e.Monsters {
+		// Vérifie si la position du deuxième monstre est à proximité du joueur (dans un rayon plus petit).
 		if Monster2.Position.X > e.Player.Position.X-50 &&
 			Monster2.Position.X < e.Player.Position.X+50 &&
 			Monster2.Position.Y > e.Player.Position.Y-50 &&
 			Monster2.Position.Y < e.Player.Position.Y+50 {
 
+			// Si le monstre est nommé "Ralouf".
 			if Monster2.Name == "Ralouf" {
+				// Affiche un message indiquant que le joueur peut combattre.
 				e.NormalTalk(Monster2, "Press E for FIGHT!!")
+				// Vérifie si la touche E a été pressée.
 				if rl.IsKeyPressed(rl.KeyE) {
+					// Change l'état du moteur de jeu pour indiquer que le joueur est en combat.
 					e.StateEngine = INFIGHT
+					// Définit le monstre actuel du joueur.
 					e.Player.CurrentMonster = Monster2
+					// Affiche un message indiquant que le combat commence.
 					e.NormalTalk(Monster2, "Le combat commence !")
 				}
 			}
@@ -237,29 +250,42 @@ func (e *Engine) MonsterCollisions() {
 	}
 }
 
+// Affiche un dialogue entre le joueur et un monstre.
 func (e *Engine) NormalTalk(m entity.Monster, sentence string) {
+	// Appelle la fonction pour rendre le dialogue à l'écran.
 	e.RenderDialog(m, sentence)
 }
 
+// Gère la logique de pause du jeu.
 func (e *Engine) PauseLogic() {
-	//Menus
+	// Vérifie si le joueur a appuyé sur la touche Échap ou P pour revenir au jeu.
 	if rl.IsKeyPressed(rl.KeyEscape) || rl.IsKeyPressed(rl.KeyP) {
 		e.StateEngine = INGAME
 	}
+	// Vérifie si le joueur a appuyé sur A ou Q pour revenir au menu principal.
 	if rl.IsKeyPressed(rl.KeyA) || rl.IsKeyPressed(rl.KeyQ) {
 		e.StateMenu = HOME
+		// Arrête la musique de fond.
 		rl.StopMusicStream(e.Music)
 	}
 
-	//Musique
+	// Met à jour le flux de musique.
 	rl.UpdateMusicStream(e.Music)
 }
-func (e *Engine) GAMEOver() {
-	e.StateEngine = INGAME
-	e.InitEntities()
 
-}
-func (e *Engine) YouWin() {
+// Gère la logique de fin de jeu en cas de défaite.
+func (e *Engine) GAMEOver() {
+	// Réinitialise l'état du moteur de jeu pour revenir à l'état de jeu normal.
 	e.StateEngine = INGAME
+	// Réinitialise toutes les entités du jeu.
 	e.InitEntities()
 }
+
+// Gère la logique de fin de jeu en cas de victoire.
+func (e *Engine) YouWin() {
+	// Réinitialise l'état du moteur de jeu pour revenir à l'état de jeu normal.
+	e.StateEngine = INGAME
+	// Réinitialise toutes les entités du jeu.
+	e.InitEntities()
+}
+
