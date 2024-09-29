@@ -3,6 +3,7 @@ package engine
 import (
 	
 	"main/src/entity"
+	
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -236,6 +237,7 @@ func (e *Engine) MonsterCollisions() {
 			if Monster2.Name == "Ralouf" {
 				// Affiche un message indiquant que le joueur peut combattre.
 				e.NormalTalk(Monster2, "Press E for FIGHT!!")
+
 				// Vérifie si la touche E a été pressée.
 				if rl.IsKeyPressed(rl.KeyE) {
 					// Change l'état du moteur de jeu pour indiquer que le joueur est en combat.
