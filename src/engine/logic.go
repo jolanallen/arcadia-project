@@ -85,8 +85,6 @@ func (e *Engine) InGameLogic() {   // fonction qui permet la gestion de la logiq
 		}
 	}
 	e.ZoneCollisions()
-
-
 	                                            // gravité appliquer au si le player n'est pas au sol
 	if !e.Player.IsGround {                    // si le personnage n'est pas au sol donc en l'air
 		e.Player.Position.Y += e.Player.Chute // on ajoute la valeur de la variable chute
@@ -116,9 +114,9 @@ func (e *Engine) InGameLogic() {   // fonction qui permet la gestion de la logiq
 
 	if rl.IsKeyDown(rl.KeyLeftShift) || rl.IsKeyDown(rl.KeyRightShift) {    // si la touche shift gauche ou shift droite est pressé
 		 if e.SupSpeed {
-			e.Player.Speed = 9
+			e.Player.Speed = 100
 		 } else {
-			e.Player.Speed = 3
+			e.Player.Speed = 50
 		 }
 		e.Player.Speed = 3                                               // alors la variable speed qui correspond a la vitesse du player est defini a 3
 	} else {                                                             // sinon 
