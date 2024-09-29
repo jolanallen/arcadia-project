@@ -1,7 +1,9 @@
 package fight
 
+
 import (
 	"main/src/entity"
+	
 )
 
 type fight int
@@ -23,7 +25,6 @@ func Fight(player entity.Player, monster entity.Monster) {
 			player.Money += monster.Worth
 			break
 		}
-
 		player.Attack(&monster)
 		monster.Attack(&player)
 	}
